@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "GuestConfig",
         "tags": ["guest", "external", "b2b", "calling", "meeting", "messaging", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/microsoftteams/guest-access"
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/guest-access",
+        "compliance": {
+            "cisaScuba": ["MS.TEAMS.2.2v2"],
+            "cisV6": ["8.2.2", "8.2.3"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "guestCalling": {

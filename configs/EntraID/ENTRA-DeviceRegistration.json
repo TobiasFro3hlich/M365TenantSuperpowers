@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "DeviceRegistration",
         "tags": ["devices", "registration", "mfa", "security"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/devices/manage-device-identities"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/devices/manage-device-identities",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["5.1.4.1", "5.1.4.2"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "multiFactorAuthConfiguration": "required",

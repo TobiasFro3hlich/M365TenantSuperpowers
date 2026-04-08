@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "CallingPolicy",
         "tags": ["calling", "voicemail", "forwarding", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "identity": "Global",

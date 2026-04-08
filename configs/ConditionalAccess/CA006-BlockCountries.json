@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "Location",
         "tags": ["geo-blocking", "location", "security"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-location"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-location",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Best practice (geo-blocking)"
+        }
     },
     "policy": {
         "displayName": "CA006 - Block Untrusted Countries",

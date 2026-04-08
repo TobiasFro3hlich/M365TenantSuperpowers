@@ -32,7 +32,10 @@
             "AllowWhiteboard": true,
             "AllowSharedNotes": true,
             "AllowParticipantGiveRequestControl": true,
-            "AllowMeetingReactions": true
+            "AllowMeetingReactions": true,
+            "AllowAnonymousUsersToStartMeeting": false,
+            "AllowPSTNUsersToBypassLobby": false,
+            "AllowOrganizersToOverrideLobbySettings": false
         }
     },
     "parameters": {}

@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "NamedLocations",
         "tags": ["named-locations", "geo", "conditional-access", "dach"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/location-condition"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/location-condition",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Required for CA006"
+        }
     },
     "settings": {
         "namedLocations": [

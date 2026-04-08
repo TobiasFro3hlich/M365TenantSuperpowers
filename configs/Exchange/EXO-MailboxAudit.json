@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "id": "EXO-009",
+        "name": "Mailbox Audit Actions - Full Coverage",
+        "description": "Enables all mailbox audit actions for Owner, Delegate, and Admin operations across all mailboxes. Ensures complete audit trail for compliance and incident response.",
+        "severity": "Critical",
+        "category": "MailboxAudit",
+        "tags": ["audit", "mailbox", "compliance", "forensics", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/audit-mailboxes",
+        "compliance": {
+            "cisaScuba": ["MS.EXO.13.1v1"],
+            "cisV6": ["6.1.1", "6.1.2"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "AuditAdmin": [
+            "Copy", "Create", "FolderBind", "HardDelete", "MessageBind",
+            "Move", "MoveToDeletedItems", "SendAs", "SendOnBehalf",
+            "SoftDelete", "Update", "UpdateCalendarDelegation",
+            "UpdateFolderPermissions", "UpdateInboxRules"
+        ],
+        "AuditDelegate": [
+            "Create", "FolderBind", "HardDelete", "Move",
+            "MoveToDeletedItems", "SendAs", "SendOnBehalf",
+            "SoftDelete", "Update", "UpdateFolderPermissions",
+            "UpdateInboxRules"
+        ],
+        "AuditOwner": [
+            "Create", "HardDelete", "MailboxLogin", "Move",
+            "MoveToDeletedItems", "SoftDelete", "Update",
+            "UpdateCalendarDelegation", "UpdateFolderPermissions",
+            "UpdateInboxRules"
+        ]
+    },
+    "parameters": {}
+}

@@ -119,6 +119,10 @@ function Invoke-M365Profile {
                         $actionParams['ConfigNames'] = $step.configs
                         $actionParams['Parameters'] = $Parameters
                     }
+                    'Import-M365PowerBIConfigSet' {
+                        $actionParams['ConfigNames'] = $step.configs
+                        $actionParams['Parameters'] = $Parameters
+                    }
                     'Set-M365EXO*' {
                         $actionParams['ConfigName'] = $step.configs[0]
                         $actionParams['Parameters'] = $Parameters

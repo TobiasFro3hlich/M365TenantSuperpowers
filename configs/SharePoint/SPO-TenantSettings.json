@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "TenantSettings",
         "tags": ["tenant", "legacy-auth", "aip", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
+        "microsoftReference": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["7.2.1"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "LegacyAuthProtocolsEnabled": false,

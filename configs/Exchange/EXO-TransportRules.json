@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "TransportRules",
         "tags": ["transport-rules", "mail-flow", "disclaimer", "auto-forward-block", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/exchange/security-and-compliance/mail-flow-rules/mail-flow-rules"
+        "microsoftReference": "https://learn.microsoft.com/exchange/security-and-compliance/mail-flow-rules/mail-flow-rules",
+        "compliance": {
+            "cisaScuba": ["MS.EXO.7.1v1"],
+            "cisV6": ["6.2.1", "6.2.3"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "rules": [

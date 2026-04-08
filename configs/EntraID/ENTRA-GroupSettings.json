@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "GroupSettings",
         "tags": ["groups", "governance", "guest-access", "sensitivity-labels"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["5.1.3.2"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "enableGroupCreation": false,

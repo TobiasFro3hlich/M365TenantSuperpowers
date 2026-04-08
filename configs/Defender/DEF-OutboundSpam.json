@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "id": "DEF-007",
+        "name": "Outbound Spam Policy - Standard",
+        "description": "Configures outbound spam filter with sending limits, blocks users who exceed limits, and enables admin notification for suspicious outbound patterns.",
+        "severity": "High",
+        "category": "OutboundSpam",
+        "tags": ["outbound-spam", "sending-limits", "bec-prevention", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/outbound-spam-protection-about",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["2.1.6", "2.1.15"],
+            "microsoftPreset": "Standard: RecipientLimitExternalPerHour=500"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - Outbound Spam Standard",
+        "policy": {
+            "RecipientLimitExternalPerHour": 500,
+            "RecipientLimitInternalPerHour": 1000,
+            "RecipientLimitPerDay": 1000,
+            "ActionWhenThresholdReached": "BlockUser",
+            "AutoForwardingMode": "Automatic",
+            "BccSuspiciousOutboundMail": false,
+            "NotifyOutboundSpam": true,
+            "NotifyOutboundSpamRecipients": ""
+        },
+        "rule": {
+            "Priority": 0
+        }
+    },
+    "parameters": {
+        "notifyRecipients": {
+            "description": "Email address to receive outbound spam notifications",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

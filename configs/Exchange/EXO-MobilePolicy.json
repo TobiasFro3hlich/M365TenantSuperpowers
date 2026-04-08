@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "MobilePolicy",
         "tags": ["mobile", "activesync", "device-policy", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-mobiledevicemailboxpolicy"
+        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-mobiledevicemailboxpolicy",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Best practice (mobile security)"
+        }
     },
     "settings": {
         "policyName": "Default",

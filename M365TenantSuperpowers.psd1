@@ -24,6 +24,7 @@
         'src/Teams/Teams.psm1'
         'src/Security/Security.psm1'
         'src/Intune/Intune.psm1'
+        'src/PowerBI/PowerBI.psm1'
     )
 
     FunctionsToExport = @(
@@ -57,6 +58,8 @@
         'Set-M365EntraDeviceRegistration'
         'Set-M365EntraPIMRoleSettings'
         'Get-M365EntraPIMReport'
+        'New-M365EntraDynamicGuestGroup'
+        'New-M365EntraAccessReview'
         'Get-M365EntraReport'
         'Test-M365EntraConfig'
         'Import-M365EntraConfigSet'
@@ -80,6 +83,8 @@
         'Set-M365EXOMobilePolicy'
         'Set-M365EXOSharingPolicy'
         'Set-M365EXORemoteDomain'
+        'Set-M365EXOSharedMailboxBlock'
+        'Set-M365EXOMailboxAuditActions'
         'Get-M365EXOReport'
         'Import-M365EXOConfigSet'
 
@@ -119,6 +124,11 @@
         'New-M365IntuneAppProtection'
         'Get-M365IntuneReport'
         'Import-M365IntuneConfigSet'
+
+        # Power BI / Microsoft Fabric
+        'Set-M365PowerBITenantSettings'
+        'Get-M365PowerBIReport'
+        'Import-M365PowerBIConfigSet'
 
         # Root
         'Invoke-M365Profile'

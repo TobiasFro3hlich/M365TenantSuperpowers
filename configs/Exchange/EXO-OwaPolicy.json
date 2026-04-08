@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "OwaPolicy",
         "tags": ["owa", "outlook-web", "client-access", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy"
+        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["6.5.3"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "policyName": "OwaMailboxPolicy-Default",

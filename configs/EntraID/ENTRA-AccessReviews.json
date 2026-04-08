@@ -1,0 +1,85 @@
+{
+    "metadata": {
+        "id": "ENTRA-012",
+        "name": "Access Reviews - Guests and Privileged Roles",
+        "description": "Creates quarterly access reviews for guest users and monthly reviews for privileged role assignments. Ensures stale access is removed and privileges are justified.",
+        "severity": "High",
+        "category": "AccessReviews",
+        "tags": ["access-reviews", "guest-lifecycle", "privileged-access", "governance", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/entra/id-governance/access-reviews-overview",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["5.3.2", "5.3.3"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "accessReviews": [
+            {
+                "displayName": "M365SP - Guest User Access Review (Quarterly)",
+                "descriptionForAdmins": "Quarterly review of all guest user access. Remove guests who no longer need access.",
+                "descriptionForReviewers": "Please review whether each guest user still needs access to your team/group. Deny access for users who no longer need it.",
+                "scope": {
+                    "@odata.type": "#microsoft.graph.principalResourceMembershipsScope",
+                    "principalScopes": [
+                        {
+                            "@odata.type": "#microsoft.graph.accessReviewQueryScope",
+                            "query": "/users?$filter=(userType eq 'Guest')",
+                            "queryType": "MicrosoftGraph"
+                        }
+                    ],
+                    "resourceScopes": [
+                        {
+                            "@odata.type": "#microsoft.graph.accessReviewQueryScope",
+                            "query": "/groups",
+                            "queryType": "MicrosoftGraph"
+                        }
+                    ]
+                },
+                "reviewers": [
+                    {
+                        "query": "./manager",
+                        "queryType": "MicrosoftGraph"
+                    }
+                ],
+                "defaultDecision": "Deny",
+                "autoApplyDecisions": true,
+                "recurrence": {
+                    "pattern": {
+                        "type": "absoluteMonthly",
+                        "interval": 3
+                    },
+                    "range": {
+                        "type": "noEnd",
+                        "startDate": "2026-05-01"
+                    }
+                }
+            },
+            {
+                "displayName": "M365SP - Privileged Role Review (Monthly)",
+                "descriptionForAdmins": "Monthly review of privileged role assignments. Ensure all admin access is still justified.",
+                "descriptionForReviewers": "Please confirm that each user still requires this privileged role. Deny access for users who no longer need elevated permissions.",
+                "scope": {
+                    "@odata.type": "#microsoft.graph.accessReviewQueryScope",
+                    "query": "/roleManagement/directory/roleAssignmentScheduleInstances?$filter=roleDefinitionId in ('62e90394-69f5-4237-9190-012177145e10','e8611ab8-c189-46e8-94e1-60213ab1f814','194ae4cb-b126-40b2-bd5b-6091b380977d')",
+                    "queryType": "MicrosoftGraph",
+                    "queryRoot": null
+                },
+                "reviewers": [],
+                "defaultDecision": "None",
+                "autoApplyDecisions": false,
+                "recurrence": {
+                    "pattern": {
+                        "type": "absoluteMonthly",
+                        "interval": 1
+                    },
+                    "range": {
+                        "type": "noEnd",
+                        "startDate": "2026-05-01"
+                    }
+                }
+            }
+        ]
+    },
+    "parameters": {}
+}

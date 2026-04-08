@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "ChannelsPolicy",
         "tags": ["channels", "private-channels", "shared-channels", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-policies"
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-policies",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "identity": "Global",

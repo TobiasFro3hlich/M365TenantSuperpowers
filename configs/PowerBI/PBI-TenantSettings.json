@@ -1,0 +1,87 @@
+{
+    "metadata": {
+        "id": "PBI-001",
+        "name": "Power BI Tenant Settings - CIS Hardened",
+        "description": "Configures all Power BI / Microsoft Fabric tenant settings per CIS v6 Section 9. Restricts guest access, blocks publish to web, disables R/Python visuals, enables sensitivity labels, restricts external sharing and service principal access.",
+        "severity": "High",
+        "category": "TenantSettings",
+        "tags": ["powerbi", "fabric", "guest", "publish-to-web", "sensitivity-labels", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["9.1.1", "9.1.2", "9.1.3", "9.1.4", "9.1.5", "9.1.6", "9.1.7", "9.1.8", "9.1.9", "9.1.10", "9.1.11"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "tenantSettings": [
+            {
+                "settingName": "AllowGuestUserToAccessPowerBI",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.1 - Restrict guest user access"
+            },
+            {
+                "settingName": "AllowExternalUserInvitations",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.2 - Restrict external user invitations"
+            },
+            {
+                "settingName": "AllowGuestUserToAccessContent",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.3 - Restrict guest access to content"
+            },
+            {
+                "settingName": "PublishToWeb",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.4 - Restrict publish to web"
+            },
+            {
+                "settingName": "AllowRAndPythonVisuals",
+                "tenantSettingGroup": "RAndPythonVisuals",
+                "enabled": false,
+                "cisControl": "9.1.5 - Disable R and Python visuals"
+            },
+            {
+                "settingName": "AllowUsersToApplySensitivityLabels",
+                "tenantSettingGroup": "InformationProtection",
+                "enabled": true,
+                "cisControl": "9.1.6 - Enable sensitivity labels for content"
+            },
+            {
+                "settingName": "AllowShareableLinks",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.7 - Restrict shareable links"
+            },
+            {
+                "settingName": "AllowExternalDataSharing",
+                "tenantSettingGroup": "ExportAndSharingSettings",
+                "enabled": false,
+                "cisControl": "9.1.8 - Restrict external data sharing"
+            },
+            {
+                "settingName": "BlockResourceKeyAuthentication",
+                "tenantSettingGroup": "DeveloperSettings",
+                "enabled": true,
+                "cisControl": "9.1.9 - Block ResourceKey Authentication"
+            },
+            {
+                "settingName": "ServicePrincipalAccess",
+                "tenantSettingGroup": "DeveloperSettings",
+                "enabled": false,
+                "cisControl": "9.1.10 - Restrict API access by Service Principals"
+            },
+            {
+                "settingName": "ServicePrincipalProfiles",
+                "tenantSettingGroup": "DeveloperSettings",
+                "enabled": false,
+                "cisControl": "9.1.11 - Service Principals cannot create profiles"
+            }
+        ]
+    },
+    "parameters": {}
+}

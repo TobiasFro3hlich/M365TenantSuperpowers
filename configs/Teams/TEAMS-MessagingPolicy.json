@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "MessagingPolicy",
         "tags": ["messaging", "chat", "giphy", "read-receipts", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "identity": "Global",

@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "AccessControl",
         "tags": ["access-control", "conditional-access", "idle-signout", "unmanaged-devices", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices"
+        "microsoftReference": "https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["7.3.1"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "ConditionalAccessPolicy": "AllowLimitedAccess",

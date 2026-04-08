@@ -6,7 +6,12 @@
         "severity": "Low",
         "category": "Application",
         "tags": ["terms-of-use", "compliance", "governance"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A (Terms of Use)"
+        }
     },
     "policy": {
         "displayName": "CA010 - Require Terms of Use",

@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "CrossTenantAccess",
         "tags": ["cross-tenant", "b2b", "external-access", "federation"],
-        "microsoftReference": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview"
+        "microsoftReference": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.8.3v1"],
+            "cisV6": ["5.1.6.1"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "inboundTrust": {

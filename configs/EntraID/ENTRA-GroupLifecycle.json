@@ -6,7 +6,12 @@
         "severity": "High",
         "category": "GroupLifecycle",
         "tags": ["groups", "lifecycle", "expiration", "governance"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-lifecycle"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-lifecycle",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Best practice (governance)"
+        }
     },
     "settings": {
         "groupLifetimeInDays": 365,

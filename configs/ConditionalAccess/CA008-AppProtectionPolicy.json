@@ -6,7 +6,12 @@
         "severity": "Medium",
         "category": "Application",
         "tags": ["mam", "app-protection", "mobile", "byod"],
-        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-policy-approved-app-or-app-protection"
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-policy-approved-app-or-app-protection",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Best practice (MAM)"
+        }
     },
     "policy": {
         "displayName": "CA008 - Require App Protection Policy",

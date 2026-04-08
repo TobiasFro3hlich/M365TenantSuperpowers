@@ -1,0 +1,51 @@
+{
+    "metadata": {
+        "id": "CA014",
+        "name": "Require Phishing-Resistant MFA for Admins",
+        "description": "Requires phishing-resistant authentication strength (FIDO2, Windows Hello, Certificate) for privileged admin roles. Stronger than CA002 which only requires any MFA. Required by CISA MS.AAD.3.6v1 and CIS 5.2.2.5.",
+        "severity": "Critical",
+        "category": "Identity",
+        "tags": ["phishing-resistant", "auth-strength", "fido2", "admins", "zero-trust"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.3.6v1"],
+            "cisV6": ["5.2.2.5"],
+            "microsoftPreset": "Built-in: Phishing-resistant MFA strength"
+        }
+    },
+    "policy": {
+        "displayName": "CA014 - Require Phishing-Resistant MFA for Admins",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeRoles": [
+                    "62e90394-69f5-4237-9190-012177145e10",
+                    "194ae4cb-b126-40b2-bd5b-6091b380977d",
+                    "f28a1f50-f6e7-4571-818b-6a12f2af6b6c",
+                    "29232cdf-9323-42fd-ade2-1d097af3e4de",
+                    "b1be1c3e-b65d-4f19-8427-f6fa0d97feb9",
+                    "fe930be7-5e62-47db-91af-98c3a49a38b1",
+                    "9b895d92-2cd3-44c7-9d02-a6ac2d5ea5c3",
+                    "e8611ab8-c189-46e8-94e1-60213ab1f814"
+                ]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "authenticationStrength": {
+                "id": "00000000-0000-0000-0000-000000000004"
+            }
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

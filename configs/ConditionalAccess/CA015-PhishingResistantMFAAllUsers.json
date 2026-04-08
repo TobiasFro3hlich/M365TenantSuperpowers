@@ -1,0 +1,42 @@
+{
+    "metadata": {
+        "id": "CA015",
+        "name": "Require Phishing-Resistant MFA for All Users",
+        "description": "Requires phishing-resistant authentication strength (FIDO2, Windows Hello, Certificate) for all users. The ultimate MFA policy — eliminates MFA fatigue/phishing attacks. Required by CISA MS.AAD.3.1v1.",
+        "severity": "Critical",
+        "category": "Identity",
+        "tags": ["phishing-resistant", "auth-strength", "fido2", "all-users", "zero-trust"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.3.1v1"],
+            "cisV6": ["5.2.2.2"],
+            "microsoftPreset": "Built-in: Phishing-resistant MFA strength"
+        }
+    },
+    "policy": {
+        "displayName": "CA015 - Require Phishing-Resistant MFA for All Users",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "authenticationStrength": {
+                "id": "00000000-0000-0000-0000-000000000004"
+            }
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

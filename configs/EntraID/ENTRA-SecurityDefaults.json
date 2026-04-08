@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "SecurityDefaults",
         "tags": ["security-defaults", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/entra/fundamentals/security-defaults"
+        "microsoftReference": "https://learn.microsoft.com/entra/fundamentals/security-defaults",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "Disabled when using CA policies"
+        }
     },
     "settings": {
         "isEnabled": false

@@ -1,0 +1,25 @@
+{
+    "metadata": {
+        "id": "DEF-008",
+        "name": "Connection Filter - Secure Baseline",
+        "description": "Ensures the connection filter IP allow list is empty and the safe list is disabled. Allowing IPs or enabling the safe list bypasses spam filtering, creating a security risk.",
+        "severity": "High",
+        "category": "ConnectionFilter",
+        "tags": ["connection-filter", "ip-allow", "safe-list", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/connection-filter-policies-configure",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["2.1.12", "2.1.13"],
+            "microsoftPreset": "Standard: IPAllowList empty, EnableSafeList=false"
+        }
+    },
+    "settings": {
+        "policyName": "Default",
+        "policy": {
+            "IPAllowList": [],
+            "IPBlockList": [],
+            "EnableSafeList": false
+        }
+    },
+    "parameters": {}
+}

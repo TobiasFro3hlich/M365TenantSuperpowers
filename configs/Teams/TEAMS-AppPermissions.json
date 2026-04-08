@@ -6,7 +6,12 @@
         "severity": "Critical",
         "category": "AppPermissions",
         "tags": ["apps", "permissions", "third-party", "custom-apps", "baseline"],
-        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-app-permission-policies"
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-app-permission-policies",
+        "compliance": {
+            "cisaScuba": ["MS.TEAMS.5.1v2", "MS.TEAMS.5.2v2", "MS.TEAMS.5.3v2"],
+            "cisV6": ["8.4.1"],
+            "microsoftPreset": "N/A"
+        }
     },
     "settings": {
         "identity": "Global",
