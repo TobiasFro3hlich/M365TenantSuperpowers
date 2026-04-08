@@ -35,6 +35,7 @@
         'Test-M365Prerequisites'
         'Export-M365Report'
         'Write-M365Log'
+        'Invoke-M365ComplianceAudit'
 
         # Conditional Access
         'New-M365CAPolicy'
