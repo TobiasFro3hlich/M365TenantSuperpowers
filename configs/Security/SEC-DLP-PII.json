@@ -1,0 +1,40 @@
+{
+    "metadata": {
+        "id": "SEC-001",
+        "name": "DLP Policy - PII Protection",
+        "description": "Protects personally identifiable information (PII) across Exchange, SharePoint, OneDrive, and Teams. Blocks sharing of credit card numbers, national IDs (SSN/ITIN), and passport numbers. Deploys in test mode first.",
+        "severity": "Critical",
+        "category": "DLP",
+        "tags": ["dlp", "pii", "credit-card", "ssn", "compliance", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/dlp-learn-about-dlp",
+        "compliance": {
+            "cisaScuba": ["MS.DEFENDER.4.1v2", "MS.DEFENDER.4.2v1", "MS.DEFENDER.4.3v1", "MS.DEFENDER.4.4v1"],
+            "cisV6": ["3.2.1", "3.2.2"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - PII Protection",
+        "mode": "TestWithNotifications",
+        "exchangeLocation": ["All"],
+        "sharePointLocation": ["All"],
+        "oneDriveLocation": ["All"],
+        "teamsLocation": ["All"],
+        "rules": [
+            {
+                "name": "M365SP - Block PII Sharing - High Count",
+                "contentContainsSensitiveInformation": [
+                    { "name": "Credit Card Number", "minCount": 1, "confidenceLevel": "High" },
+                    { "name": "U.S. Social Security Number (SSN)", "minCount": 1, "confidenceLevel": "High" },
+                    { "name": "U.S. Individual Taxpayer Identification Number (ITIN)", "minCount": 1, "confidenceLevel": "High" }
+                ],
+                "blockAccess": true,
+                "blockAccessScope": "All",
+                "notifyUser": "SiteAdmin,LastModifier,Owner",
+                "notifyPolicyTipCustomText": "This content contains sensitive information (PII) and cannot be shared externally.",
+                "generateIncidentReport": "SiteAdmin"
+            }
+        ]
+    },
+    "parameters": {}
+}

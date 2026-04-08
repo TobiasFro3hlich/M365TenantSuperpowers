@@ -1,0 +1,43 @@
+{
+    "metadata": {
+        "id": "CA012",
+        "name": "Block Device Code Authentication Flow",
+        "description": "Blocks the device code authentication flow which is commonly abused in phishing attacks. Attackers trick users into entering a device code on a legitimate Microsoft page, granting the attacker access.",
+        "severity": "High",
+        "category": "Identity",
+        "tags": ["device-code", "auth-flow", "phishing", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/how-to-policy-authentication-flows",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.3.9v1"],
+            "cisV6": ["5.2.2.12"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "policy": {
+        "displayName": "CA012 - Block Device Code Flow",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            },
+            "authenticationFlows": {
+                "transferMethods": ["deviceCodeFlow"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["block"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

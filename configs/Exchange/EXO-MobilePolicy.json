@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "id": "EXO-007",
+        "name": "Mobile Device Policy - Secure Baseline",
+        "description": "Configures mobile device mailbox policy requiring encryption and password, with device wipe capability after failed attempts.",
+        "severity": "High",
+        "category": "MobilePolicy",
+        "tags": ["mobile", "activesync", "device-policy", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-mobiledevicemailboxpolicy"
+    },
+    "settings": {
+        "policyName": "Default",
+        "policy": {
+            "PasswordEnabled": true,
+            "AlphanumericPasswordRequired": false,
+            "MinPasswordLength": 6,
+            "MaxPasswordFailedAttempts": 10,
+            "AllowSimplePassword": false,
+            "PasswordExpiration": "Unlimited",
+            "RequireDeviceEncryption": true,
+            "AllowNonProvisionableDevices": true,
+            "MaxInactivityTimeLock": "00:15:00",
+            "DeviceEncryptionEnabled": true
+        }
+    },
+    "parameters": {}
+}

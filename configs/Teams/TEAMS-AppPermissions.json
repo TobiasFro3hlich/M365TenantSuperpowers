@@ -1,0 +1,20 @@
+{
+    "metadata": {
+        "id": "TEAMS-004",
+        "name": "App Permission Policy - Controlled",
+        "description": "Configures the Global app permission policy: allows all Microsoft apps, allows all third-party apps, blocks all custom (LOB) apps by default. Customize per org.",
+        "severity": "Critical",
+        "category": "AppPermissions",
+        "tags": ["apps", "permissions", "third-party", "custom-apps", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-app-permission-policies"
+    },
+    "settings": {
+        "identity": "Global",
+        "policy": {
+            "DefaultCatalogAppsType": "AllowedAppList",
+            "GlobalCatalogAppsType": "AllowedAppList",
+            "PrivateCatalogAppsType": "BlockedAppList"
+        }
+    },
+    "parameters": {}
+}

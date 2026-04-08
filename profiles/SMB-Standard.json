@@ -1,0 +1,137 @@
+{
+    "metadata": {
+        "name": "SMB-Standard",
+        "description": "Complete security baseline for SMBs covering all 9 service areas. Aligned with CISA SCuBA, CIS v6, and Microsoft Standard recommendations.",
+        "version": "6.0.0",
+        "author": "M365TenantSuperpowers"
+    },
+    "requiredServices": ["Graph", "ExchangeOnline", "SharePoint", "Teams"],
+    "requiredParameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group",
+            "required": true,
+            "example": "12345678-1234-1234-1234-123456789012"
+        }
+    },
+    "steps": [
+        {
+            "order": 1,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": ["ENTRA-SecurityDefaults", "ENTRA-AuthorizationPolicy"],
+            "description": "Disable Security Defaults and harden authorization policy"
+        },
+        {
+            "order": 2,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": ["ENTRA-AuthMethodPolicy", "ENTRA-PasswordProtection"],
+            "description": "Auth methods (Authenticator, FIDO2), password protection"
+        },
+        {
+            "order": 3,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": ["ENTRA-AdminConsent", "ENTRA-NamedLocations"],
+            "description": "Admin consent workflow and named locations"
+        },
+        {
+            "order": 4,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": ["CA001-BlockLegacyAuth", "CA002-RequireMFAAdmins", "CA003-RequireMFAAllUsers"],
+            "description": "Core CA: block legacy auth, MFA admins, MFA all"
+        },
+        {
+            "order": 5,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": ["CA004-BlockHighRiskSignIns", "CA011-BlockHighRiskUsers"],
+            "description": "Risk-based: block high risk sign-ins AND users"
+        },
+        {
+            "order": 6,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": ["CA007-RequireMFAGuestAccess", "CA009-SessionTimeout", "CA012-BlockDeviceCodeFlow"],
+            "description": "Guest MFA, session controls, block device code flow"
+        },
+        {
+            "order": 7,
+            "module": "Defender",
+            "action": "Import-M365DefenderConfigSet",
+            "configs": ["DEF-AtpGlobal", "DEF-SafeLinks", "DEF-SafeAttachments"],
+            "description": "Defender ATP global, Safe Links, Safe Attachments"
+        },
+        {
+            "order": 8,
+            "module": "Defender",
+            "action": "Import-M365DefenderConfigSet",
+            "configs": ["DEF-AntiPhish", "DEF-AntiSpam", "DEF-AntiMalware"],
+            "description": "Anti-phishing, anti-spam, anti-malware"
+        },
+        {
+            "order": 9,
+            "module": "Exchange",
+            "action": "Import-M365EXOConfigSet",
+            "configs": ["EXO-OrganizationConfig", "EXO-Dkim", "EXO-ExternalTag"],
+            "description": "EXO: audit on, SMTP AUTH off, DKIM, external tag"
+        },
+        {
+            "order": 10,
+            "module": "Exchange",
+            "action": "Import-M365EXOConfigSet",
+            "configs": ["EXO-RemoteDomain", "EXO-TransportRules"],
+            "description": "Block auto-forwarding, [EXTERNAL] prefix"
+        },
+        {
+            "order": 11,
+            "module": "SharePoint",
+            "action": "Import-M365SPOConfigSet",
+            "configs": ["SPO-TenantSettings", "SPO-SharingSettings", "SPO-AccessControl"],
+            "description": "SPO: legacy auth off, restricted sharing, idle signout"
+        },
+        {
+            "order": 12,
+            "module": "Teams",
+            "action": "Import-M365TeamsConfigSet",
+            "configs": ["TEAMS-MeetingPolicy", "TEAMS-MessagingPolicy", "TEAMS-Federation"],
+            "description": "Teams: meeting, messaging, block consumer federation"
+        },
+        {
+            "order": 13,
+            "module": "Teams",
+            "action": "Import-M365TeamsConfigSet",
+            "configs": ["TEAMS-GuestConfig", "TEAMS-ClientConfig"],
+            "description": "Teams: guest config, block third-party storage"
+        },
+        {
+            "order": 14,
+            "module": "Intune",
+            "action": "Import-M365IntuneConfigSet",
+            "configs": ["INTUNE-ComplianceSettings", "INTUNE-AppProtectioniOS", "INTUNE-AppProtectionAndroid"],
+            "description": "Intune: secure-by-default, iOS + Android app protection (MAM)"
+        },
+        {
+            "order": 15,
+            "module": "Security",
+            "action": "Import-M365SecurityConfigSet",
+            "configs": ["SEC-AuditRetention", "SEC-AlertPolicies"],
+            "description": "Audit retention 1yr, CISA-required alerts"
+        },
+        {
+            "order": 16,
+            "module": "Security",
+            "action": "Import-M365SecurityConfigSet",
+            "configs": ["SEC-DLP-PII", "SEC-SensitivityLabels", "SEC-LabelPolicy"],
+            "description": "DLP for PII, sensitivity labels, label publishing"
+        },
+        {
+            "order": 17,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": ["ENTRA-GroupSettings", "ENTRA-GroupLifecycle"],
+            "description": "Group governance (creation restrictions, 365-day expiration)"
+        }
+    ]
+}

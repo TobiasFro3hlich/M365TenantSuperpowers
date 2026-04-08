@@ -1,0 +1,49 @@
+{
+    "metadata": {
+        "id": "INTUNE-006",
+        "name": "App Protection Policy - iOS",
+        "description": "Protects corporate data in managed apps on iOS without requiring device enrollment. Blocks cut/copy/paste to unmanaged apps, requires PIN, blocks jailbroken devices, and encrypts app data.",
+        "severity": "Critical",
+        "category": "AppProtection",
+        "tags": ["mam", "ios", "app-protection", "byod", "data-protection", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/apps/app-protection-policy-settings-ios",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "@odata.type": "#microsoft.graph.iosManagedAppProtection",
+        "displayName": "M365SP - iOS App Protection",
+        "description": "Baseline app protection for iOS managed apps",
+        "periodOfflineBeforeAccessCheck": "PT12H",
+        "periodOnlineBeforeAccessCheck": "PT30M",
+        "allowedInboundDataTransferSources": "managedApps",
+        "allowedOutboundDataTransferDestinations": "managedApps",
+        "organizationalCredentialsRequired": false,
+        "allowedOutboundClipboardSharingLevel": "managedAppsWithPasteIn",
+        "dataBackupBlocked": true,
+        "deviceComplianceRequired": false,
+        "managedBrowserToOpenLinksRequired": false,
+        "saveAsBlocked": true,
+        "periodOfflineBeforeWipeIsEnforced": "P90D",
+        "pinRequired": true,
+        "maximumPinRetries": 5,
+        "simplePinBlocked": true,
+        "minimumPinLength": 6,
+        "pinCharacterSet": "numeric",
+        "periodBeforePinReset": "P0D",
+        "contactSyncBlocked": false,
+        "printBlocked": true,
+        "fingerprintBlocked": false,
+        "disableAppPinIfDevicePinIsSet": true,
+        "minimumRequiredOsVersion": "16.0",
+        "appActionIfDeviceComplianceRequired": "block",
+        "appActionIfMaximumPinRetriesExceeded": "block",
+        "faceIdBlocked": false,
+        "encryptAppData": true,
+        "appDataEncryptionType": "whenDeviceLocked"
+    },
+    "parameters": {}
+}

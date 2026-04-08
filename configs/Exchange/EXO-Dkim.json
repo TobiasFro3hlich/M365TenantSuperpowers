@@ -1,0 +1,16 @@
+{
+    "metadata": {
+        "id": "EXO-002",
+        "name": "DKIM Signing - Enable All Domains",
+        "description": "Enables DKIM signing for all accepted domains. Critical for email authentication, deliverability, and preventing spoofing.",
+        "severity": "Critical",
+        "category": "Dkim",
+        "tags": ["dkim", "email-auth", "anti-spoofing", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure",
+        "compliance": { "cisaScuba": ["MS.EXO.3.1v1"], "cisV6": ["2.1.9"], "microsoftPreset": "N/A" }
+    },
+    "settings": {
+        "enableForAllDomains": true
+    },
+    "parameters": {}
+}

@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "M365TenantSuperpowers CA Policy Config",
+    "description": "Schema for Conditional Access policy configuration files",
+    "type": "object",
+    "required": ["metadata", "policy"],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "required": ["id", "name", "description", "severity", "category"],
+            "properties": {
+                "id": { "type": "string", "pattern": "^CA\\d{3}$" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "severity": { "type": "string", "enum": ["Critical", "High", "Medium", "Low"] },
+                "category": { "type": "string", "enum": ["Identity", "Device", "Location", "Application", "Session"] },
+                "tags": { "type": "array", "items": { "type": "string" } },
+                "microsoftReference": { "type": "string", "format": "uri" }
+            }
+        },
+        "policy": {
+            "type": "object",
+            "required": ["displayName", "state", "conditions"],
+            "properties": {
+                "displayName": { "type": "string" },
+                "state": { "type": "string", "enum": ["enabled", "disabled", "enabledForReportingButNotEnforced"] },
+                "conditions": { "type": "object" },
+                "grantControls": { "type": "object" },
+                "sessionControls": { "type": "object" }
+            }
+        },
+        "parameters": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "required": ["description", "required", "type"],
+                "properties": {
+                    "description": { "type": "string" },
+                    "required": { "type": "boolean" },
+                    "type": { "type": "string", "enum": ["groupObjectId", "stringArray", "string", "boolean"] }
+                }
+            }
+        }
+    }
+}

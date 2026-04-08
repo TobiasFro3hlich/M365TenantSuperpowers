@@ -1,0 +1,26 @@
+{
+    "metadata": {
+        "id": "ENTRA-005",
+        "name": "Admin Consent Request Policy",
+        "description": "Enables the admin consent workflow so users can request access to apps they cannot consent to themselves. Prevents shadow IT by providing a governed path.",
+        "severity": "Critical",
+        "category": "AdminConsent",
+        "tags": ["admin-consent", "app-governance", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/enterprise-apps/configure-admin-consent-workflow",
+        "compliance": { "cisaScuba": ["MS.AAD.5.2v1", "MS.AAD.5.3v1"], "cisV6": ["5.1.5.1", "5.1.5.2"], "microsoftPreset": "N/A" }
+    },
+    "settings": {
+        "isEnabled": true,
+        "notifyReviewers": true,
+        "remindersEnabled": true,
+        "requestDurationInDays": 30,
+        "reviewers": []
+    },
+    "parameters": {
+        "reviewerGroupId": {
+            "description": "Object ID of the group containing admin consent reviewers. If empty, Global Admins review.",
+            "required": false,
+            "type": "groupObjectId"
+        }
+    }
+}

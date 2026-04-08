@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "id": "EXO-005",
+        "name": "Transport Rules - Security Baseline",
+        "description": "Deploys essential mail flow rules: external email disclaimer/warning header prepend and block auto-forwarding to external recipients.",
+        "severity": "Critical",
+        "category": "TransportRules",
+        "tags": ["transport-rules", "mail-flow", "disclaimer", "auto-forward-block", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/exchange/security-and-compliance/mail-flow-rules/mail-flow-rules"
+    },
+    "settings": {
+        "rules": [
+            {
+                "Name": "M365SP - External Email Warning",
+                "Priority": 0,
+                "FromScope": "NotInOrganization",
+                "SentToScope": "InOrganization",
+                "PrependSubject": "[EXTERNAL] ",
+                "SetHeaderName": "X-External-Mail",
+                "SetHeaderValue": "true",
+                "Mode": "Enforce",
+                "State": "Enabled"
+            }
+        ]
+    },
+    "parameters": {}
+}

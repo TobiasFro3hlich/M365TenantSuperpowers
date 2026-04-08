@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "id": "TEAMS-007",
+        "name": "Channels Policy - Standard",
+        "description": "Configures the Global channels policy: allows private channel creation, allows shared channels but restricts external sharing of shared channels.",
+        "severity": "High",
+        "category": "ChannelsPolicy",
+        "tags": ["channels", "private-channels", "shared-channels", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-policies"
+    },
+    "settings": {
+        "identity": "Global",
+        "policy": {
+            "AllowPrivateChannelCreation": true,
+            "AllowSharedChannelCreation": true,
+            "AllowUserToParticipateInExternalSharedChannel": false,
+            "AllowChannelSharingToExternalUser": false
+        }
+    },
+    "parameters": {}
+}

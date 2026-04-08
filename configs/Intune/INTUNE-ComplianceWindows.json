@@ -1,0 +1,57 @@
+{
+    "metadata": {
+        "id": "INTUNE-002",
+        "name": "Windows 10/11 Compliance Policy",
+        "description": "Requires BitLocker, Windows Firewall, Antivirus, Defender real-time protection, minimum OS version, and password complexity for Windows devices.",
+        "severity": "Critical",
+        "category": "CompliancePolicy",
+        "tags": ["windows", "compliance", "bitlocker", "defender", "firewall", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/protect/compliance-policy-create-windows",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "@odata.type": "#microsoft.graph.windows10CompliancePolicy",
+        "displayName": "M365SP - Windows 10/11 Compliance",
+        "description": "Baseline compliance for Windows 10/11 devices",
+        "bitLockerEnabled": true,
+        "secureBootEnabled": true,
+        "codeIntegrityEnabled": true,
+        "activeFirewallRequired": true,
+        "defenderEnabled": true,
+        "defenderVersion": "",
+        "signatureOutOfDate": true,
+        "rtpEnabled": true,
+        "antivirusRequired": true,
+        "antiSpywareRequired": true,
+        "passwordRequired": true,
+        "passwordMinimumLength": 8,
+        "passwordRequiredType": "alphanumeric",
+        "passwordMinutesOfInactivityBeforeLock": 15,
+        "osMinimumVersion": "10.0.19045",
+        "storageRequireEncryption": true,
+        "scheduledActionsForRule": [
+            {
+                "ruleName": "PasswordRequired",
+                "scheduledActionConfigurations": [
+                    {
+                        "actionType": "block",
+                        "gracePeriodHours": 24,
+                        "notificationTemplateId": ""
+                    }
+                ]
+            }
+        ],
+        "assignments": [
+            {
+                "target": {
+                    "@odata.type": "#microsoft.graph.allLicensedUsersAssignmentTarget"
+                }
+            }
+        ]
+    },
+    "parameters": {}
+}

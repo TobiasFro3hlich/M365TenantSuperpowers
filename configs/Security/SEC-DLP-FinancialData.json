@@ -1,0 +1,40 @@
+{
+    "metadata": {
+        "id": "SEC-002",
+        "name": "DLP Policy - Financial Data Protection",
+        "description": "Protects financial data including IBAN numbers, SWIFT codes, and credit card numbers across all workloads. Tailored for European/DACH organizations.",
+        "severity": "High",
+        "category": "DLP",
+        "tags": ["dlp", "financial", "iban", "swift", "gdpr", "compliance"],
+        "microsoftReference": "https://learn.microsoft.com/purview/dlp-learn-about-dlp",
+        "compliance": {
+            "cisaScuba": ["MS.DEFENDER.4.1v2"],
+            "cisV6": ["3.2.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - Financial Data Protection",
+        "mode": "TestWithNotifications",
+        "exchangeLocation": ["All"],
+        "sharePointLocation": ["All"],
+        "oneDriveLocation": ["All"],
+        "teamsLocation": ["All"],
+        "rules": [
+            {
+                "name": "M365SP - Block Financial Data Sharing",
+                "contentContainsSensitiveInformation": [
+                    { "name": "International Banking Account Number (IBAN)", "minCount": 1, "confidenceLevel": "High" },
+                    { "name": "SWIFT Code", "minCount": 1, "confidenceLevel": "High" },
+                    { "name": "Credit Card Number", "minCount": 1, "confidenceLevel": "High" }
+                ],
+                "blockAccess": true,
+                "blockAccessScope": "All",
+                "notifyUser": "SiteAdmin,LastModifier,Owner",
+                "notifyPolicyTipCustomText": "This content contains financial data and cannot be shared externally.",
+                "generateIncidentReport": "SiteAdmin"
+            }
+        ]
+    },
+    "parameters": {}
+}

@@ -1,0 +1,269 @@
+{
+    "metadata": {
+        "name": "Enterprise-Hardened",
+        "description": "Maximum security baseline across all 9 service areas. Full CISA SCuBA + CIS L1/L2 coverage with Intune device compliance, app protection, and enrollment restrictions.",
+        "version": "6.1.0",
+        "author": "M365TenantSuperpowers"
+    },
+    "requiredServices": [
+        "Graph",
+        "ExchangeOnline",
+        "SharePoint",
+        "Teams"
+    ],
+    "requiredParameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group",
+            "required": true,
+            "example": "12345678-1234-1234-1234-123456789012"
+        }
+    },
+    "steps": [
+        {
+            "order": 1,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": [
+                "ENTRA-SecurityDefaults",
+                "ENTRA-AuthorizationPolicy"
+            ],
+            "description": "Disable Security Defaults and harden authorization policy"
+        },
+        {
+            "order": 2,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": [
+                "ENTRA-AuthMethodPolicy",
+                "ENTRA-PasswordProtection"
+            ],
+            "description": "Strong auth methods and password protection"
+        },
+        {
+            "order": 3,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": [
+                "ENTRA-AdminConsent",
+                "ENTRA-CrossTenantDefault",
+                "ENTRA-NamedLocations",
+                "ENTRA-DeviceRegistration"
+            ],
+            "description": "Admin consent, cross-tenant, named locations, device MFA"
+        },
+        {
+            "order": 4,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": [
+                "ENTRA-PIMRoleSettings"
+            ],
+            "description": "PIM: require approval for GA, MFA for all activations, no permanent assignments, alerts"
+        },
+        {
+            "order": 5,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": [
+                "CA001-BlockLegacyAuth",
+                "CA002-RequireMFAAdmins",
+                "CA003-RequireMFAAllUsers",
+                "CA004-BlockHighRiskSignIns",
+                "CA011-BlockHighRiskUsers"
+            ],
+            "description": "All core identity + risk-based CA policies"
+        },
+        {
+            "order": 6,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": [
+                "CA005-RequireCompliantDevice",
+                "CA006-BlockCountries"
+            ],
+            "description": "Device compliance and geo-blocking"
+        },
+        {
+            "order": 7,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": [
+                "CA007-RequireMFAGuestAccess",
+                "CA008-AppProtectionPolicy",
+                "CA009-SessionTimeout"
+            ],
+            "description": "Guest MFA, app protection, session controls"
+        },
+        {
+            "order": 8,
+            "module": "ConditionalAccess",
+            "action": "Import-M365CAPolicySet",
+            "configs": [
+                "CA012-BlockDeviceCodeFlow",
+                "CA013-RequireManagedDeviceForMFAReg"
+            ],
+            "description": "Block device code flow, managed device for MFA registration"
+        },
+        {
+            "order": 9,
+            "module": "Defender",
+            "action": "Import-M365DefenderConfigSet",
+            "configs": [
+                "DEF-AtpGlobal",
+                "DEF-SafeLinks",
+                "DEF-SafeAttachments"
+            ],
+            "description": "Defender ATP global, Safe Links, Safe Attachments"
+        },
+        {
+            "order": 10,
+            "module": "Defender",
+            "action": "Import-M365DefenderConfigSet",
+            "configs": [
+                "DEF-AntiPhish",
+                "DEF-AntiSpam",
+                "DEF-AntiMalware"
+            ],
+            "description": "Full threat protection stack"
+        },
+        {
+            "order": 11,
+            "module": "Exchange",
+            "action": "Import-M365EXOConfigSet",
+            "configs": [
+                "EXO-OrganizationConfig",
+                "EXO-Dkim",
+                "EXO-ExternalTag"
+            ],
+            "description": "EXO: audit, SMTP AUTH off, DKIM, external tag"
+        },
+        {
+            "order": 12,
+            "module": "Exchange",
+            "action": "Import-M365EXOConfigSet",
+            "configs": [
+                "EXO-RemoteDomain",
+                "EXO-TransportRules",
+                "EXO-OwaPolicy",
+                "EXO-MobilePolicy",
+                "EXO-SharingPolicy"
+            ],
+            "description": "Full EXO lockdown"
+        },
+        {
+            "order": 13,
+            "module": "SharePoint",
+            "action": "Import-M365SPOConfigSet",
+            "configs": [
+                "SPO-TenantSettings",
+                "SPO-SharingSettings",
+                "SPO-AccessControl"
+            ],
+            "description": "SPO: legacy auth off, restricted sharing, idle signout"
+        },
+        {
+            "order": 14,
+            "module": "Teams",
+            "action": "Import-M365TeamsConfigSet",
+            "configs": [
+                "TEAMS-MeetingPolicy",
+                "TEAMS-MessagingPolicy",
+                "TEAMS-CallingPolicy"
+            ],
+            "description": "Teams: meeting, messaging, calling"
+        },
+        {
+            "order": 15,
+            "module": "Teams",
+            "action": "Import-M365TeamsConfigSet",
+            "configs": [
+                "TEAMS-AppPermissions",
+                "TEAMS-Federation",
+                "TEAMS-GuestConfig"
+            ],
+            "description": "Teams: apps, federation, guest config"
+        },
+        {
+            "order": 16,
+            "module": "Teams",
+            "action": "Import-M365TeamsConfigSet",
+            "configs": [
+                "TEAMS-ChannelsPolicy",
+                "TEAMS-ClientConfig"
+            ],
+            "description": "Teams: channels, block third-party storage"
+        },
+        {
+            "order": 17,
+            "module": "Intune",
+            "action": "Import-M365IntuneConfigSet",
+            "configs": [
+                "INTUNE-ComplianceSettings",
+                "INTUNE-EnrollmentRestriction"
+            ],
+            "description": "Intune: secure-by-default, block personal devices"
+        },
+        {
+            "order": 18,
+            "module": "Intune",
+            "action": "Import-M365IntuneConfigSet",
+            "configs": [
+                "INTUNE-ComplianceWindows",
+                "INTUNE-ComplianceiOS",
+                "INTUNE-ComplianceAndroid"
+            ],
+            "description": "Device compliance: Windows (BitLocker, Defender), iOS, Android"
+        },
+        {
+            "order": 19,
+            "module": "Intune",
+            "action": "Import-M365IntuneConfigSet",
+            "configs": [
+                "INTUNE-AppProtectioniOS",
+                "INTUNE-AppProtectionAndroid"
+            ],
+            "description": "App protection (MAM) for iOS and Android"
+        },
+        {
+            "order": 20,
+            "module": "Security",
+            "action": "Import-M365SecurityConfigSet",
+            "configs": [
+                "SEC-AuditRetention",
+                "SEC-AlertPolicies"
+            ],
+            "description": "Audit retention 1yr, CISA-required alerts"
+        },
+        {
+            "order": 21,
+            "module": "Security",
+            "action": "Import-M365SecurityConfigSet",
+            "configs": [
+                "SEC-DLP-PII",
+                "SEC-DLP-FinancialData"
+            ],
+            "description": "DLP: PII + financial data protection"
+        },
+        {
+            "order": 22,
+            "module": "Security",
+            "action": "Import-M365SecurityConfigSet",
+            "configs": [
+                "SEC-SensitivityLabels",
+                "SEC-LabelPolicy",
+                "SEC-RetentionDefault"
+            ],
+            "description": "Sensitivity labels, publishing, 1yr retention"
+        },
+        {
+            "order": 23,
+            "module": "EntraID",
+            "action": "Import-M365EntraConfigSet",
+            "configs": [
+                "ENTRA-GroupSettings",
+                "ENTRA-GroupLifecycle"
+            ],
+            "description": "Group governance with strict controls"
+        }
+    ]
+}

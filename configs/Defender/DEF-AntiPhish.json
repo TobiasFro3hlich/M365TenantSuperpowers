@@ -1,0 +1,47 @@
+{
+    "metadata": {
+        "id": "DEF-002",
+        "name": "Anti-Phishing Policy - Standard Protection",
+        "description": "Configures anti-phishing with mailbox intelligence, spoof intelligence, impersonation protection for org domains, first-contact safety tips, and honor DMARC.",
+        "severity": "Critical",
+        "category": "AntiPhish",
+        "tags": ["anti-phish", "impersonation", "spoof", "dmarc", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/anti-phishing-policies-about",
+        "compliance": { "cisaScuba": ["MS.DEFENDER.2.1v1", "MS.DEFENDER.2.2v1"], "cisV6": ["2.1.7"], "microsoftPreset": "Standard (PhishThreshold=3)" }
+    },
+    "settings": {
+        "policyName": "M365SP - Anti-Phishing Standard",
+        "policy": {
+            "Enabled": true,
+            "PhishThresholdLevel": 3,
+            "EnableMailboxIntelligence": true,
+            "EnableMailboxIntelligenceProtection": true,
+            "MailboxIntelligenceProtectionAction": "Quarantine",
+            "EnableSpoofIntelligence": true,
+            "AuthenticationFailAction": "Quarantine",
+            "HonorDmarcPolicy": true,
+            "EnableFirstContactSafetyTips": true,
+            "EnableSimilarUsersSafetyTips": true,
+            "EnableSimilarDomainsSafetyTips": true,
+            "EnableUnusualCharactersSafetyTips": true,
+            "EnableUnauthenticatedSender": true,
+            "EnableViaTag": true,
+            "EnableOrganizationDomainsProtection": true,
+            "EnableTargetedDomainsProtection": false,
+            "TargetedDomainProtectionAction": "Quarantine",
+            "EnableTargetedUserProtection": false,
+            "TargetedUserProtectionAction": "Quarantine"
+        },
+        "rule": {
+            "RecipientDomainIs": [],
+            "Priority": 0
+        }
+    },
+    "parameters": {
+        "protectedDomains": {
+            "description": "Additional domains to protect against impersonation",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

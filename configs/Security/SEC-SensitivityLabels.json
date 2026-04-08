@@ -1,0 +1,74 @@
+{
+    "metadata": {
+        "id": "SEC-003",
+        "name": "Sensitivity Labels - Standard Set",
+        "description": "Creates a standard set of sensitivity labels: Public, Internal, Confidential, and Highly Confidential. Confidential adds headers/footers, Highly Confidential adds encryption.",
+        "severity": "Critical",
+        "category": "SensitivityLabels",
+        "tags": ["sensitivity-labels", "information-protection", "encryption", "classification", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/sensitivity-labels",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["3.3.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "labels": [
+            {
+                "displayName": "Public",
+                "tooltip": "Information that is intended for public consumption.",
+                "comment": "No protection applied. Suitable for marketing materials, public announcements.",
+                "priority": 0,
+                "contentType": "File, Email",
+                "encryptionEnabled": false,
+                "headerEnabled": false,
+                "footerEnabled": false,
+                "watermarkEnabled": false
+            },
+            {
+                "displayName": "Internal",
+                "tooltip": "Information for internal use only. Not intended for external sharing.",
+                "comment": "Default label for general business content.",
+                "priority": 1,
+                "contentType": "File, Email",
+                "encryptionEnabled": false,
+                "headerEnabled": true,
+                "headerText": "INTERNAL",
+                "footerEnabled": true,
+                "footerText": "Classification: Internal - For authorized use only",
+                "watermarkEnabled": false
+            },
+            {
+                "displayName": "Confidential",
+                "tooltip": "Sensitive business information. Sharing restricted to authorized personnel.",
+                "comment": "For HR data, financial reports, strategic documents.",
+                "priority": 2,
+                "contentType": "File, Email",
+                "encryptionEnabled": false,
+                "headerEnabled": true,
+                "headerText": "CONFIDENTIAL",
+                "footerEnabled": true,
+                "footerText": "Classification: Confidential - Do not distribute externally",
+                "watermarkEnabled": false
+            },
+            {
+                "displayName": "Highly Confidential",
+                "tooltip": "Extremely sensitive information. Encrypted and access-restricted.",
+                "comment": "For executive communications, M&A documents, legal privileged content.",
+                "priority": 3,
+                "contentType": "File, Email",
+                "encryptionEnabled": true,
+                "encryptionProtectionType": "Template",
+                "encryptionDoNotForward": true,
+                "headerEnabled": true,
+                "headerText": "HIGHLY CONFIDENTIAL",
+                "footerEnabled": true,
+                "footerText": "Classification: Highly Confidential - Encrypted and restricted",
+                "watermarkEnabled": true,
+                "watermarkText": "HIGHLY CONFIDENTIAL"
+            }
+        ]
+    },
+    "parameters": {}
+}

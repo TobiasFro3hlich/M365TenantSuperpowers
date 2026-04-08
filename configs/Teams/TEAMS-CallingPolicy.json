@@ -1,0 +1,26 @@
+{
+    "metadata": {
+        "id": "TEAMS-003",
+        "name": "Calling Policy - Standard",
+        "description": "Configures the Global calling policy: allows private calling, voicemail, call forwarding, call groups, and delegation.",
+        "severity": "Critical",
+        "category": "CallingPolicy",
+        "tags": ["calling", "voicemail", "forwarding", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
+    },
+    "settings": {
+        "identity": "Global",
+        "policy": {
+            "AllowPrivateCalling": true,
+            "AllowVoicemail": "UserOverride",
+            "AllowCallForwardingToUser": true,
+            "AllowCallForwardingToPhone": true,
+            "AllowCallGroups": true,
+            "AllowDelegation": true,
+            "AllowWebPSTNCalling": true,
+            "PreventTollBypass": false,
+            "BusyOnBusyEnabledType": "Enabled"
+        }
+    },
+    "parameters": {}
+}

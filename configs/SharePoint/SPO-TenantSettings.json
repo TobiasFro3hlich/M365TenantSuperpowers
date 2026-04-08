@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "id": "SPO-001",
+        "name": "Tenant Settings - Secure Baseline",
+        "description": "Disables legacy auth protocols, enables notifications, marks new files as sensitive by default, and enables AIP integration.",
+        "severity": "Critical",
+        "category": "TenantSettings",
+        "tags": ["tenant", "legacy-auth", "aip", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off"
+    },
+    "settings": {
+        "LegacyAuthProtocolsEnabled": false,
+        "NotificationsInSharePointEnabled": true,
+        "CommentsOnSitePagesDisabled": false,
+        "CommentsOnFilesDisabled": false,
+        "SocialBarOnSitePagesDisabled": false,
+        "MarkNewFilesSensitiveByDefault": "AllowExternalSharing",
+        "EnableAIPIntegration": true,
+        "DisableCustomAppAuthentication": true,
+        "EnableAutoNewsDigest": true
+    },
+    "parameters": {}
+}

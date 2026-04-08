@@ -1,0 +1,25 @@
+{
+    "metadata": {
+        "id": "EXO-006",
+        "name": "OWA Mailbox Policy - Secure Baseline",
+        "description": "Configures Outlook on the Web with sensible security defaults: disables linked accounts, restricts file downloads from wac viewers.",
+        "severity": "High",
+        "category": "OwaPolicy",
+        "tags": ["owa", "outlook-web", "client-access", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy"
+    },
+    "settings": {
+        "policyName": "OwaMailboxPolicy-Default",
+        "policy": {
+            "LinkedInEnabled": false,
+            "FacebookEnabled": false,
+            "WacExternalServicesEnabled": false,
+            "ExternalSPMySiteHostURL": "",
+            "ClassicAttachmentsEnabled": true,
+            "AdditionalStorageProvidersAvailable": false,
+            "PersonalAccountCalendarsEnabled": false,
+            "LocalEventsEnabled": false
+        }
+    },
+    "parameters": {}
+}

@@ -1,0 +1,41 @@
+{
+    "metadata": {
+        "id": "CA011",
+        "name": "Block High Risk Users",
+        "description": "Blocks users assessed as high risk by Entra ID Protection. Unlike CA004 (sign-in risk), this policy targets user accounts flagged as compromised. Requires Entra ID P2.",
+        "severity": "Critical",
+        "category": "Identity",
+        "tags": ["risk", "user-risk", "identity-protection", "baseline", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.2.1v1"],
+            "cisV6": ["5.2.2.6"],
+            "microsoftPreset": "N/A (requires P2)"
+        }
+    },
+    "policy": {
+        "displayName": "CA011 - Block High Risk Users",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            },
+            "userRiskLevels": ["high"]
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["block"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "metadata": {
+        "id": "ENTRA-002",
+        "name": "Authentication Methods - Secure Baseline",
+        "description": "Enables Microsoft Authenticator with number matching, FIDO2 security keys, and Temporary Access Pass. Disables SMS and voice as primary methods.",
+        "severity": "Critical",
+        "category": "AuthMethods",
+        "tags": ["auth-methods", "mfa", "authenticator", "fido2", "passwordless", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.3.3v2", "MS.AAD.3.4v1", "MS.AAD.3.5v2"],
+            "cisV6": ["5.2.3.1", "5.2.3.5", "5.2.3.7"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "registrationEnforcement": {
+            "authenticationMethodsRegistrationCampaign": {
+                "state": "enabled",
+                "snoozeDurationInDays": 14,
+                "includeTargets": [
+                    {
+                        "id": "all_users",
+                        "targetType": "group",
+                        "targetedAuthenticationMethod": "microsoftAuthenticator"
+                    }
+                ]
+            }
+        },
+        "reportSuspiciousActivitySettings": {
+            "state": "enabled",
+            "includeTarget": {
+                "targetType": "group",
+                "id": "all_users"
+            }
+        },
+        "authenticationMethodConfigurations": [
+            {
+                "id": "MicrosoftAuthenticator",
+                "@odata.type": "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration",
+                "state": "enabled",
+                "featureSettings": {
+                    "displayAppInformationRequiredState": {
+                        "state": "enabled",
+                        "includeTarget": {
+                            "targetType": "group",
+                            "id": "all_users"
+                        }
+                    },
+                    "displayLocationInformationRequiredState": {
+                        "state": "enabled",
+                        "includeTarget": {
+                            "targetType": "group",
+                            "id": "all_users"
+                        }
+                    }
+                },
+                "includeTargets": [
+                    {
+                        "targetType": "group",
+                        "id": "all_users",
+                        "authenticationMode": "any"
+                    }
+                ]
+            },
+            {
+                "id": "Fido2",
+                "@odata.type": "#microsoft.graph.fido2AuthenticationMethodConfiguration",
+                "state": "enabled",
+                "isSelfServiceRegistrationAllowed": true,
+                "isAttestationEnforced": false,
+                "keyRestrictions": {
+                    "isEnforced": false,
+                    "enforcementType": "block",
+                    "aaGuids": []
+                },
+                "includeTargets": [
+                    {
+                        "targetType": "group",
+                        "id": "all_users"
+                    }
+                ]
+            },
+            {
+                "id": "TemporaryAccessPass",
+                "@odata.type": "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration",
+                "state": "enabled",
+                "defaultLifetimeInMinutes": 60,
+                "defaultLength": 8,
+                "minimumLifetimeInMinutes": 60,
+                "maximumLifetimeInMinutes": 480,
+                "isUsableOnce": true,
+                "includeTargets": [
+                    {
+                        "targetType": "group",
+                        "id": "all_users"
+                    }
+                ]
+            },
+            {
+                "id": "Sms",
+                "@odata.type": "#microsoft.graph.smsAuthenticationMethodConfiguration",
+                "state": "disabled"
+            },
+            {
+                "id": "Voice",
+                "@odata.type": "#microsoft.graph.voiceAuthenticationMethodConfiguration",
+                "state": "disabled"
+            },
+            {
+                "id": "Email",
+                "@odata.type": "#microsoft.graph.emailAuthenticationMethodConfiguration",
+                "state": "disabled",
+                "allowExternalIdToUseEmailOtp": "disabled",
+                "includeTargets": [
+                    {
+                        "targetType": "group",
+                        "id": "all_users"
+                    }
+                ]
+            }
+        ]
+    },
+    "parameters": {}
+}

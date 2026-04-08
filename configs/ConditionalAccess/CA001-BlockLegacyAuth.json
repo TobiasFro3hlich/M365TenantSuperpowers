@@ -1,0 +1,43 @@
+{
+    "metadata": {
+        "id": "CA001",
+        "name": "Block Legacy Authentication",
+        "description": "Blocks legacy authentication protocols (IMAP, POP3, SMTP, ActiveSync with basic auth) which cannot perform MFA and are a primary attack vector.",
+        "severity": "Critical",
+        "category": "Identity",
+        "tags": ["legacy-auth", "baseline", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.1.1v1"],
+            "cisV6": ["5.2.2.3"],
+            "microsoftPreset": "Security Defaults equivalent"
+        }
+    },
+    "policy": {
+        "displayName": "CA001 - Block Legacy Authentication",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": [
+                "exchangeActiveSync",
+                "other"
+            ],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["block"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

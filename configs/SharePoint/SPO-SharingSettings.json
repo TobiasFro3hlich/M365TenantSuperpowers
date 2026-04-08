@@ -1,0 +1,34 @@
+{
+    "metadata": {
+        "id": "SPO-002",
+        "name": "Sharing Settings - Restricted External",
+        "description": "Restricts external sharing to existing guests only (no anonymous links). Requires account match, blocks resharing, sets 30-day guest expiry. This is the single most impactful security decision for SharePoint.",
+        "severity": "Critical",
+        "category": "Sharing",
+        "tags": ["sharing", "external", "guest", "anonymous-links", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "compliance": {
+            "cisaScuba": ["MS.SHAREPOINT.1.1v1", "MS.SHAREPOINT.1.2v1", "MS.SHAREPOINT.2.1v1", "MS.SHAREPOINT.2.2v1", "MS.SHAREPOINT.3.1v1", "MS.SHAREPOINT.3.2v1"],
+            "cisV6": ["7.2.3", "7.2.4", "7.2.5", "7.2.7", "7.2.9", "7.2.11"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "SharingCapability": "ExistingExternalUserSharingOnly",
+        "OneDriveSharingCapability": "ExistingExternalUserSharingOnly",
+        "DefaultSharingLinkType": "Direct",
+        "DefaultLinkPermission": "View",
+        "RequireAcceptingAccountMatchInvitedAccount": true,
+        "PreventExternalUsersFromResharing": true,
+        "FileAnonymousLinkType": "View",
+        "FolderAnonymousLinkType": "View",
+        "RequireAnonymousLinksExpireInDays": 30,
+        "ExternalUserExpirationRequired": true,
+        "ExternalUserExpireInDays": 30,
+        "ShowPeoplePickerSuggestionsForGuestUsers": true,
+        "NotifyOwnersWhenItemsReshared": true,
+        "NotifyOwnersWhenInvitationsAccepted": true,
+        "EnableAzureADB2BIntegration": true
+    },
+    "parameters": {}
+}

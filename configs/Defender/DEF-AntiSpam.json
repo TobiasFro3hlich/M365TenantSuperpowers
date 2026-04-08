@@ -1,0 +1,48 @@
+{
+    "metadata": {
+        "id": "DEF-003",
+        "name": "Anti-Spam Policy - Standard Protection",
+        "description": "Configures inbound spam filtering with Microsoft recommended Standard settings. Quarantines high-confidence spam and phishing, moves spam to junk.",
+        "severity": "Critical",
+        "category": "AntiSpam",
+        "tags": ["anti-spam", "content-filter", "quarantine", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/recommended-settings-for-eop-and-office365",
+        "compliance": { "cisaScuba": ["MS.DEFENDER.1.1v1"], "cisV6": ["2.1.12", "2.1.13", "2.1.14"], "microsoftPreset": "Standard (BulkThreshold=6)" }
+    },
+    "settings": {
+        "policyName": "M365SP - Anti-Spam Standard",
+        "policy": {
+            "SpamAction": "MoveToJmf",
+            "HighConfidenceSpamAction": "Quarantine",
+            "PhishSpamAction": "Quarantine",
+            "HighConfidencePhishAction": "Quarantine",
+            "BulkSpamAction": "MoveToJmf",
+            "BulkThreshold": 6,
+            "QuarantineRetentionPeriod": 30,
+            "InlineSafetyTipsEnabled": true,
+            "SpamZapEnabled": true,
+            "PhishZapEnabled": true,
+            "MarkAsSpamBulkMail": "On",
+            "IncreaseScoreWithImageLinks": "Off",
+            "IncreaseScoreWithNumericIps": "Off",
+            "IncreaseScoreWithRedirectToOtherPort": "Off",
+            "IncreaseScoreWithBizOrInfoUrls": "Off",
+            "MarkAsSpamEmptyMessages": "Off",
+            "MarkAsSpamJavaScriptInHtml": "Off",
+            "MarkAsSpamFramesInHtml": "Off",
+            "MarkAsSpamObjectTagsInHtml": "Off",
+            "MarkAsSpamEmbedTagsInHtml": "Off",
+            "MarkAsSpamFormTagsInHtml": "Off",
+            "MarkAsSpamWebBugsInHtml": "Off",
+            "MarkAsSpamSensitiveWordList": "Off",
+            "MarkAsSpamSpfRecordHardFail": "Off",
+            "MarkAsSpamFromAddressAuthFail": "Off",
+            "MarkAsSpamNdrBackscatter": "Off"
+        },
+        "rule": {
+            "RecipientDomainIs": [],
+            "Priority": 0
+        }
+    },
+    "parameters": {}
+}

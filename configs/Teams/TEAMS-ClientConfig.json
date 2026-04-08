@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "id": "TEAMS-008",
+        "name": "Client Configuration - Secure Baseline",
+        "description": "Configures Teams client settings: disables email into channels per CISA baseline, blocks third-party cloud storage (DropBox, Google Drive, Box, Egnyte).",
+        "severity": "High",
+        "category": "ClientConfig",
+        "tags": ["client", "storage", "dropbox", "google-drive", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/get-clients",
+        "compliance": {
+            "cisaScuba": ["MS.TEAMS.4.1v1"],
+            "cisV6": ["8.1.1", "8.1.2"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "AllowEmailIntoChannel": false,
+        "AllowOrgTab": true,
+        "AllowSkypeBusinessInterop": true,
+        "AllowDropBox": false,
+        "AllowBox": false,
+        "AllowGoogleDrive": false,
+        "AllowEgnyte": false,
+        "AllowShareFile": false
+    },
+    "parameters": {}
+}

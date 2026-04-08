@@ -1,0 +1,38 @@
+{
+    "metadata": {
+        "id": "CA008",
+        "name": "Require App Protection Policy",
+        "description": "Requires an approved client app or app protection policy on mobile platforms (iOS, Android). Protects corporate data on mobile devices without full MDM enrollment.",
+        "severity": "Medium",
+        "category": "Application",
+        "tags": ["mam", "app-protection", "mobile", "byod"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-policy-approved-app-or-app-protection"
+    },
+    "policy": {
+        "displayName": "CA008 - Require App Protection Policy",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            },
+            "platforms": {
+                "includePlatforms": ["android", "iOS"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["approvedApplication", "compliantApplication"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

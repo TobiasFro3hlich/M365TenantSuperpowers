@@ -1,0 +1,49 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "M365TenantSuperpowers Profile",
+    "description": "Schema for profile configuration files that compose multiple configuration steps",
+    "type": "object",
+    "required": ["metadata", "requiredServices", "steps"],
+    "properties": {
+        "metadata": {
+            "type": "object",
+            "required": ["name", "description", "version"],
+            "properties": {
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+                "author": { "type": "string" }
+            }
+        },
+        "requiredServices": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["Graph", "ExchangeOnline", "SharePoint", "Teams"] }
+        },
+        "requiredParameters": {
+            "type": "object",
+            "description": "Parameters that must be provided when invoking this profile",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "description": { "type": "string" },
+                    "required": { "type": "boolean" },
+                    "example": { "type": "string" }
+                }
+            }
+        },
+        "steps": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["order", "module", "action", "description"],
+                "properties": {
+                    "order": { "type": "integer", "minimum": 1 },
+                    "module": { "type": "string" },
+                    "action": { "type": "string" },
+                    "configs": { "type": "array", "items": { "type": "string" } },
+                    "description": { "type": "string" }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+# PowerShell
+*.ps1xml
+
+# Output / Reports
+output/
+reports/
+*.csv
+*.html
+
+# Sensitive files
+*.pfx
+*.cer
+parameters/*.json
+!parameters/_template.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Module build output
+publish/
+nupkg/

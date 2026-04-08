@@ -1,0 +1,34 @@
+{
+    "metadata": {
+        "id": "TEAMS-005",
+        "name": "Federation - Secure External Access",
+        "description": "Allows federated communication with other Teams organizations but blocks Skype consumer and Teams consumer (personal) accounts. This is the recommended security baseline.",
+        "severity": "Critical",
+        "category": "Federation",
+        "tags": ["federation", "external-access", "skype", "consumer", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/manage-external-access",
+        "compliance": {
+            "cisaScuba": ["MS.TEAMS.2.1v2", "MS.TEAMS.2.2v2", "MS.TEAMS.2.3v2"],
+            "cisV6": ["8.2.1", "8.2.2", "8.2.3", "8.2.4"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "AllowFederatedUsers": true,
+        "AllowTeamsConsumer": false,
+        "AllowTeamsConsumerInbound": false,
+        "AllowPublicUsers": false
+    },
+    "parameters": {
+        "allowedDomains": {
+            "description": "Specific domains to allow federation with (leave empty for open federation)",
+            "required": false,
+            "type": "stringArray"
+        },
+        "blockedDomains": {
+            "description": "Specific domains to block federation with",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

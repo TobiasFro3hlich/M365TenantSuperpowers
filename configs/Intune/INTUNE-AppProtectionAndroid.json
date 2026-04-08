@@ -1,0 +1,48 @@
+{
+    "metadata": {
+        "id": "INTUNE-007",
+        "name": "App Protection Policy - Android",
+        "description": "Protects corporate data in managed apps on Android without requiring device enrollment. Blocks data transfer to unmanaged apps, requires PIN, blocks rooted devices, encrypts app data.",
+        "severity": "Critical",
+        "category": "AppProtection",
+        "tags": ["mam", "android", "app-protection", "byod", "data-protection", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/apps/app-protection-policy-settings-android",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "@odata.type": "#microsoft.graph.androidManagedAppProtection",
+        "displayName": "M365SP - Android App Protection",
+        "description": "Baseline app protection for Android managed apps",
+        "periodOfflineBeforeAccessCheck": "PT12H",
+        "periodOnlineBeforeAccessCheck": "PT30M",
+        "allowedInboundDataTransferSources": "managedApps",
+        "allowedOutboundDataTransferDestinations": "managedApps",
+        "organizationalCredentialsRequired": false,
+        "allowedOutboundClipboardSharingLevel": "managedAppsWithPasteIn",
+        "dataBackupBlocked": true,
+        "deviceComplianceRequired": false,
+        "managedBrowserToOpenLinksRequired": false,
+        "saveAsBlocked": true,
+        "periodOfflineBeforeWipeIsEnforced": "P90D",
+        "pinRequired": true,
+        "maximumPinRetries": 5,
+        "simplePinBlocked": true,
+        "minimumPinLength": 6,
+        "pinCharacterSet": "numeric",
+        "contactSyncBlocked": false,
+        "printBlocked": true,
+        "fingerprintBlocked": false,
+        "disableAppPinIfDevicePinIsSet": true,
+        "minimumRequiredOsVersion": "13.0",
+        "appActionIfDeviceComplianceRequired": "block",
+        "appActionIfMaximumPinRetriesExceeded": "block",
+        "screenCaptureBlocked": true,
+        "encryptAppData": true,
+        "deviceLockRequired": true
+    },
+    "parameters": {}
+}

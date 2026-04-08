@@ -1,0 +1,33 @@
+{
+    "metadata": {
+        "id": "SEC-004",
+        "name": "Label Publishing Policy - All Users",
+        "description": "Publishes sensitivity labels to all users in the organization. Sets 'Internal' as the default label for documents and emails.",
+        "severity": "Critical",
+        "category": "LabelPolicy",
+        "tags": ["label-policy", "publishing", "default-label", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["3.3.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - Label Policy - All Users",
+        "labels": ["Public", "Internal", "Confidential", "Highly Confidential"],
+        "exchangeLocation": ["All"],
+        "advancedSettings": {
+            "DefaultLabelId": "",
+            "MandatoryLabelEnabled": "true",
+            "JustificationRequired": "true"
+        }
+    },
+    "parameters": {
+        "defaultLabelId": {
+            "description": "GUID of the default sensitivity label (usually 'Internal'). Get with Get-Label.",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

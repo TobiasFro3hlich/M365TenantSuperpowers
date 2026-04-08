@@ -1,0 +1,47 @@
+{
+    "metadata": {
+        "id": "CA009",
+        "name": "Enforce Sign-In Frequency and Browser Persistence",
+        "description": "Limits sign-in frequency to 24 hours and disables persistent browser sessions. Forces regular re-authentication to reduce session hijacking risk.",
+        "severity": "Medium",
+        "category": "Session",
+        "tags": ["session", "sign-in-frequency", "persistence", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-session-lifetime",
+        "compliance": { "cisaScuba": [], "cisV6": ["5.2.2.4"], "microsoftPreset": "N/A" }
+    },
+    "policy": {
+        "displayName": "CA009 - Session Timeout Controls",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["browser"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["mfa"]
+        },
+        "sessionControls": {
+            "signInFrequency": {
+                "isEnabled": true,
+                "type": "hours",
+                "value": 24
+            },
+            "persistentBrowser": {
+                "isEnabled": true,
+                "mode": "never"
+            }
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

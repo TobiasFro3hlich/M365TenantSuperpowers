@@ -1,0 +1,146 @@
+{
+    "metadata": {
+        "id": "ENTRA-011",
+        "name": "PIM Role Settings - Secure Baseline",
+        "description": "Configures Privileged Identity Management for highly privileged roles: requires approval for Global Admin activation, MFA for all activations, no permanent active assignments, max 8hr activation, 365-day eligible assignments, and notification alerts for all role changes.",
+        "severity": "Critical",
+        "category": "PIM",
+        "tags": ["pim", "privileged-access", "approval", "just-in-time", "zero-trust", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-configure",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.7.4v1", "MS.AAD.7.5v1", "MS.AAD.7.6v1", "MS.AAD.7.7v1", "MS.AAD.7.8v1", "MS.AAD.7.9v1"],
+            "cisV6": ["5.3.1", "5.3.4", "5.3.5"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "roleSettings": [
+            {
+                "roleDisplayName": "Global Administrator",
+                "roleTemplateId": "62e90394-69f5-4237-9190-012177145e10",
+                "activationRequireApproval": true,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "approvers": [],
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "Privileged Role Administrator",
+                "roleTemplateId": "e8611ab8-c189-46e8-94e1-60213ab1f814",
+                "activationRequireApproval": true,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "approvers": [],
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "Security Administrator",
+                "roleTemplateId": "194ae4cb-b126-40b2-bd5b-6091b380977d",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "Exchange Administrator",
+                "roleTemplateId": "29232cdf-9323-42fd-ade2-1d097af3e4de",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "SharePoint Administrator",
+                "roleTemplateId": "f28a1f50-f6e7-4571-818b-6a12f2af6b6c",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "User Administrator",
+                "roleTemplateId": "fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "Application Administrator",
+                "roleTemplateId": "9b895d92-2cd3-44c7-9d02-a6ac2d5ea5c3",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            },
+            {
+                "roleDisplayName": "Conditional Access Administrator",
+                "roleTemplateId": "b1be1c3e-b65d-4f19-8427-f6fa0d97feb9",
+                "activationRequireApproval": false,
+                "activationRequireMFA": true,
+                "activationMaxDurationHours": 8,
+                "eligibleAssignmentMaxDays": 365,
+                "permanentActiveAssignmentAllowed": false,
+                "activeAssignmentMaxDays": 365,
+                "notifyOnActiveAssignment": true,
+                "notifyOnEligibleAssignment": true,
+                "notifyOnActivation": true,
+                "notificationRecipients": []
+            }
+        ]
+    },
+    "parameters": {
+        "approverGroupId": {
+            "description": "Object ID of the group whose members can approve Global Admin activation. If empty, existing approvers are kept.",
+            "required": false,
+            "type": "groupObjectId"
+        },
+        "notificationRecipients": {
+            "description": "Email addresses to receive PIM notification alerts (SOC/security team). If empty, default recipients are used.",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

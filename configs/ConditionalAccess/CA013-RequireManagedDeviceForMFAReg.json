@@ -1,0 +1,40 @@
+{
+    "metadata": {
+        "id": "CA013",
+        "name": "Require Managed Device for MFA Registration",
+        "description": "Requires users to register MFA methods from a compliant or hybrid joined device. Prevents attackers from registering their own MFA methods on a compromised account from an unmanaged device.",
+        "severity": "High",
+        "category": "Device",
+        "tags": ["mfa-registration", "managed-device", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-registration",
+        "compliance": {
+            "cisaScuba": ["MS.AAD.3.8v1"],
+            "cisV6": ["5.2.2.10"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "policy": {
+        "displayName": "CA013 - Require Managed Device for MFA Registration",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeUserActions": ["urn:user:registersecurityinfo"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["compliantDevice", "domainJoinedDevice"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "id": "CA005",
+        "name": "Require Compliant Device",
+        "description": "Requires devices to be marked as compliant in Intune before accessing cloud apps. Ensures only managed, healthy devices can access corporate data.",
+        "severity": "High",
+        "category": "Device",
+        "tags": ["device", "compliance", "intune", "endpoint"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-compliant-device",
+        "compliance": { "cisaScuba": ["MS.AAD.3.7v1"], "cisV6": ["5.2.2.9"], "microsoftPreset": "N/A" }
+    },
+    "policy": {
+        "displayName": "CA005 - Require Compliant Device",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            },
+            "platforms": {
+                "includePlatforms": ["all"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["compliantDevice"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

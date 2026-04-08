@@ -1,0 +1,99 @@
+{
+    "metadata": {
+        "id": "ENTRA-006",
+        "name": "Cross-Tenant Access - Secure Default",
+        "description": "Configures default cross-tenant access settings. Trusts MFA from external tenants but not device compliance. Allows B2B collaboration inbound/outbound with defaults.",
+        "severity": "Critical",
+        "category": "CrossTenantAccess",
+        "tags": ["cross-tenant", "b2b", "external-access", "federation"],
+        "microsoftReference": "https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview"
+    },
+    "settings": {
+        "inboundTrust": {
+            "isMfaAccepted": true,
+            "isCompliantDeviceAccepted": false,
+            "isHybridAzureADJoinedDeviceAccepted": false
+        },
+        "b2bCollaborationInbound": {
+            "usersAndGroups": {
+                "accessType": "allowed",
+                "targets": [
+                    {
+                        "target": "AllUsers",
+                        "targetType": "user"
+                    }
+                ]
+            },
+            "applications": {
+                "accessType": "allowed",
+                "targets": [
+                    {
+                        "target": "AllApplications",
+                        "targetType": "application"
+                    }
+                ]
+            }
+        },
+        "b2bCollaborationOutbound": {
+            "usersAndGroups": {
+                "accessType": "allowed",
+                "targets": [
+                    {
+                        "target": "AllUsers",
+                        "targetType": "user"
+                    }
+                ]
+            },
+            "applications": {
+                "accessType": "allowed",
+                "targets": [
+                    {
+                        "target": "AllApplications",
+                        "targetType": "application"
+                    }
+                ]
+            }
+        },
+        "b2bDirectConnectInbound": {
+            "usersAndGroups": {
+                "accessType": "blocked",
+                "targets": [
+                    {
+                        "target": "AllUsers",
+                        "targetType": "user"
+                    }
+                ]
+            },
+            "applications": {
+                "accessType": "blocked",
+                "targets": [
+                    {
+                        "target": "AllApplications",
+                        "targetType": "application"
+                    }
+                ]
+            }
+        },
+        "b2bDirectConnectOutbound": {
+            "usersAndGroups": {
+                "accessType": "blocked",
+                "targets": [
+                    {
+                        "target": "AllUsers",
+                        "targetType": "user"
+                    }
+                ]
+            },
+            "applications": {
+                "accessType": "blocked",
+                "targets": [
+                    {
+                        "target": "AllApplications",
+                        "targetType": "application"
+                    }
+                ]
+            }
+        }
+    },
+    "parameters": {}
+}

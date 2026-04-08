@@ -1,0 +1,36 @@
+{
+    "metadata": {
+        "id": "CA003",
+        "name": "Require MFA for All Users",
+        "description": "Enforces MFA for all users accessing all cloud applications. The foundational MFA policy.",
+        "severity": "Critical",
+        "category": "Identity",
+        "tags": ["mfa", "all-users", "baseline", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-all-users-mfa",
+        "compliance": { "cisaScuba": ["MS.AAD.3.1v1", "MS.AAD.3.2v2"], "cisV6": ["5.2.2.2"], "microsoftPreset": "Security Defaults equivalent" }
+    },
+    "policy": {
+        "displayName": "CA003 - Require MFA for All Users",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["mfa"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

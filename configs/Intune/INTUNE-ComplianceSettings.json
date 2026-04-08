@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "id": "INTUNE-001",
+        "name": "Compliance Settings - Mark Non-Policy as Non-Compliant",
+        "description": "Marks devices without a compliance policy as non-compliant. This is critical — without it, unmanaged devices are treated as compliant and bypass CA device compliance policies.",
+        "severity": "Critical",
+        "category": "ComplianceSettings",
+        "tags": ["compliance", "secure-by-default", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/protect/device-compliance-get-started",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["4.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "secureByDefault": true,
+        "deviceComplianceCheckinThresholdDays": 30
+    },
+    "parameters": {}
+}

@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "id": "EXO-003",
+        "name": "External Sender Tag in Outlook",
+        "description": "Enables the '[External]' tag on emails from outside the organization in Outlook. Helps users identify phishing and social engineering attempts.",
+        "severity": "High",
+        "category": "ExternalTag",
+        "tags": ["external-tag", "outlook", "phishing-awareness", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/external-senders",
+        "compliance": { "cisaScuba": ["MS.EXO.7.1v1"], "cisV6": ["6.2.3"], "microsoftPreset": "N/A" }
+    },
+    "settings": {
+        "Enabled": true,
+        "AllowList": []
+    },
+    "parameters": {
+        "allowListDomains": {
+            "description": "Domains to exclude from the external tag (e.g., trusted partner domains)",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

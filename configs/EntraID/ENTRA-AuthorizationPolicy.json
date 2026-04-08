@@ -1,0 +1,28 @@
+{
+    "metadata": {
+        "id": "ENTRA-001",
+        "name": "Authorization Policy - Secure Baseline",
+        "description": "Restricts default user permissions: blocks app registration, limits guest invitations to admins, blocks MSOL PowerShell, and enables SSPR.",
+        "severity": "Critical",
+        "category": "AuthorizationPolicy",
+        "tags": ["authorization", "user-permissions", "baseline", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/users-default-permissions",
+        "compliance": { "cisaScuba": ["MS.AAD.5.1v1", "MS.AAD.8.1v1", "MS.AAD.8.2v1"], "cisV6": ["5.1.2.3", "5.1.5.1", "5.1.6.2", "5.1.6.3"], "microsoftPreset": "N/A" }
+    },
+    "settings": {
+        "allowedToSignUpEmailBasedSubscriptions": false,
+        "allowedToUseSSPR": true,
+        "allowEmailVerifiedUsersToJoinOrganization": false,
+        "blockMsolPowerShell": true,
+        "allowInvitesFrom": "adminsAndGuestInviters",
+        "guestUserRoleId": "2af84b1e-32c8-42b7-82bc-daa82404023b",
+        "defaultUserRolePermissions": {
+            "allowedToCreateApps": false,
+            "allowedToCreateSecurityGroups": true,
+            "allowedToCreateTenants": false,
+            "allowedToReadBitlockerKeysForOwnedDevice": true,
+            "allowedToReadOtherUsers": true
+        }
+    },
+    "parameters": {}
+}

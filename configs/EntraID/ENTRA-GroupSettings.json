@@ -1,0 +1,34 @@
+{
+    "metadata": {
+        "id": "ENTRA-008",
+        "name": "Group Settings - Governed Baseline",
+        "description": "Configures M365 group defaults: restricts group creation to a specific group, enables guest access to groups, sets usage guidelines URL, and enables sensitivity labels.",
+        "severity": "High",
+        "category": "GroupSettings",
+        "tags": ["groups", "governance", "guest-access", "sensitivity-labels"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-self-service-management"
+    },
+    "settings": {
+        "enableGroupCreation": false,
+        "groupCreationAllowedGroupId": "",
+        "allowGuestsToAccessGroups": true,
+        "allowGuestsToBeGroupOwner": false,
+        "allowToAddGuests": true,
+        "usageGuidelinesUrl": "",
+        "classificationList": "",
+        "defaultClassification": "",
+        "enableMIPLabels": true
+    },
+    "parameters": {
+        "groupCreationAllowedGroupId": {
+            "description": "Object ID of the group whose members are allowed to create M365 groups. Leave empty to allow all.",
+            "required": false,
+            "type": "string"
+        },
+        "usageGuidelinesUrl": {
+            "description": "URL to the organization's group usage guidelines",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

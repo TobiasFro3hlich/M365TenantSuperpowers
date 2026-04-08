@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "id": "DEF-006",
+        "name": "Safe Attachments Policy - Block Mode (Standard/Strict)",
+        "description": "Enables Safe Attachments in Block mode per Microsoft Standard/Strict recommendations. Messages with malicious attachments are quarantined entirely.",
+        "severity": "Critical",
+        "category": "SafeAttachments",
+        "tags": ["safe-attachments", "detonation", "block", "atp", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/safe-attachments-about",
+        "compliance": {
+            "cisaScuba": ["MS.DEFENDER.3.1v1"],
+            "cisV6": ["2.1.4"],
+            "microsoftPreset": "Standard/Strict: Action=Block"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - Safe Attachments Standard",
+        "policy": {
+            "Enable": true,
+            "Action": "Block",
+            "ActionOnError": true,
+            "Redirect": false,
+            "RedirectAddress": ""
+        },
+        "rule": {
+            "RecipientDomainIs": [],
+            "Priority": 0
+        }
+    },
+    "parameters": {
+        "redirectAddress": {
+            "description": "Email address to redirect detected malicious attachments to (for SecOps review)",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

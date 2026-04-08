@@ -1,0 +1,41 @@
+{
+    "metadata": {
+        "id": "CA010",
+        "name": "Require Terms of Use Acceptance",
+        "description": "Requires users to accept the organization's Terms of Use before accessing cloud applications. Terms of Use must be created in Entra ID first.",
+        "severity": "Low",
+        "category": "Application",
+        "tags": ["terms-of-use", "compliance", "governance"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/terms-of-use"
+    },
+    "policy": {
+        "displayName": "CA010 - Require Terms of Use",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            }
+        },
+        "grantControls": {
+            "operator": "AND",
+            "builtInControls": [],
+            "termsOfUse": []
+        }
+    },
+    "parameters": {
+        "termsOfUseId": {
+            "description": "Object ID of the Terms of Use document in Entra ID",
+            "required": true,
+            "type": "string"
+        },
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

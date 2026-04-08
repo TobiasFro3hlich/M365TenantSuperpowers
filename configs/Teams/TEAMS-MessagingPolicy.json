@@ -1,0 +1,30 @@
+{
+    "metadata": {
+        "id": "TEAMS-002",
+        "name": "Messaging Policy - Standard",
+        "description": "Configures the Global messaging policy: allows edit/delete, Giphy with moderate rating, memes, stickers, read receipts, URL previews, and inline translation.",
+        "severity": "Critical",
+        "category": "MessagingPolicy",
+        "tags": ["messaging", "chat", "giphy", "read-receipts", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
+    },
+    "settings": {
+        "identity": "Global",
+        "policy": {
+            "AllowUserEditMessage": true,
+            "AllowUserDeleteMessage": true,
+            "AllowUserChat": true,
+            "AllowGiphy": true,
+            "GiphyRatingType": "Moderate",
+            "AllowMemes": true,
+            "AllowStickers": true,
+            "AllowUrlPreviews": true,
+            "ReadReceiptsEnabledType": "UserPreference",
+            "AllowImmersiveReader": true,
+            "AllowUserTranslation": true,
+            "AllowRemoveUser": true,
+            "AllowPriorityMessages": true
+        }
+    },
+    "parameters": {}
+}

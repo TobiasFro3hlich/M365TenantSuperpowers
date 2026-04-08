@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "id": "TEAMS-001",
+        "name": "Meeting Policy - Secure Baseline",
+        "description": "Configures the Global meeting policy with secure defaults: lobby for external users, recording allowed, transcription enabled, IP video allowed, screen sharing to entire screen.",
+        "severity": "Critical",
+        "category": "MeetingPolicy",
+        "tags": ["meeting", "lobby", "recording", "transcription", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+        "compliance": {
+            "cisaScuba": ["MS.TEAMS.1.1v1", "MS.TEAMS.1.2v2", "MS.TEAMS.1.3v1", "MS.TEAMS.1.4v1", "MS.TEAMS.1.5v1"],
+            "cisV6": ["8.5.1", "8.5.2", "8.5.3", "8.5.4", "8.5.7"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "identity": "Global",
+        "policy": {
+            "AllowCloudRecording": true,
+            "AllowTranscription": true,
+            "AllowIPVideo": true,
+            "AllowAnonymousUsersToJoinMeeting": true,
+            "AutoAdmittedUsers": "EveryoneInCompanyExcludingGuests",
+            "AllowExternalParticipantGiveRequestControl": false,
+            "DesignatedPresenterRoleMode": "EveryoneInCompanyUserOverride",
+            "AllowMeetingChat": "Enabled",
+            "ScreenSharingMode": "EntireScreen",
+            "AllowPrivateMeetNow": true,
+            "AllowChannelMeetingScheduling": true,
+            "AllowOutlookAddIn": true,
+            "AllowPowerPointSharing": true,
+            "AllowWhiteboard": true,
+            "AllowSharedNotes": true,
+            "AllowParticipantGiveRequestControl": true,
+            "AllowMeetingReactions": true
+        }
+    },
+    "parameters": {}
+}

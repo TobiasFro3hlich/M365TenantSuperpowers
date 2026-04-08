@@ -1,0 +1,72 @@
+{
+    "metadata": {
+        "id": "SEC-007",
+        "name": "Alert Policies - CISA Required Baseline",
+        "description": "Enables the CISA SCuBA required alert policies for suspicious email patterns, connector activity, forwarding, and malicious URL clicks.",
+        "severity": "Critical",
+        "category": "AlertPolicies",
+        "tags": ["alerts", "monitoring", "suspicious-activity", "siem", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/alert-policies",
+        "compliance": {
+            "cisaScuba": ["MS.DEFENDER.5.1v1", "MS.DEFENDER.5.2v1"],
+            "cisV6": ["2.2.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "alerts": [
+            {
+                "name": "Suspicious email sending patterns detected",
+                "isEnabled": true,
+                "severity": "Medium"
+            },
+            {
+                "name": "Suspicious connector activity",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "Suspicious Email Forwarding Activity",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "Messages have been delayed",
+                "isEnabled": true,
+                "severity": "Informational"
+            },
+            {
+                "name": "Tenant restricted from sending unprovisioned email",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "Tenant restricted from sending email",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "A potentially malicious URL click was detected",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "Email messages containing malicious URL removed after delivery",
+                "isEnabled": true,
+                "severity": "High"
+            },
+            {
+                "name": "Email messages containing malware removed after delivery",
+                "isEnabled": true,
+                "severity": "High"
+            }
+        ]
+    },
+    "parameters": {
+        "notifyRecipients": {
+            "description": "Email addresses to receive alert notifications (e.g., SOC mailbox)",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

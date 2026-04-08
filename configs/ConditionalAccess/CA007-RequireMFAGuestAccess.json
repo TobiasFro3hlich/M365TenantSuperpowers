@@ -1,0 +1,30 @@
+{
+    "metadata": {
+        "id": "CA007",
+        "name": "Require MFA for Guest Access",
+        "description": "Enforces MFA for all guest and external users accessing any cloud application.",
+        "severity": "High",
+        "category": "Identity",
+        "tags": ["mfa", "guest", "external", "b2b"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-policy-guest-mfa",
+        "compliance": { "cisaScuba": [], "cisV6": [], "microsoftPreset": "Best practice" }
+    },
+    "policy": {
+        "displayName": "CA007 - Require MFA for Guests",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["GuestsOrExternalUsers"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["mfa"]
+        }
+    },
+    "parameters": {}
+}

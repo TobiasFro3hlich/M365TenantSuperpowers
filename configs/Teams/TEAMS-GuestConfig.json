@@ -1,0 +1,31 @@
+{
+    "metadata": {
+        "id": "TEAMS-006",
+        "name": "Guest Access Configuration",
+        "description": "Configures guest capabilities in Teams: allows private calling, IP video in meetings, screen sharing, chat with Giphy (moderate), editing/deleting messages.",
+        "severity": "Critical",
+        "category": "GuestConfig",
+        "tags": ["guest", "external", "b2b", "calling", "meeting", "messaging", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoftteams/guest-access"
+    },
+    "settings": {
+        "guestCalling": {
+            "AllowPrivateCalling": true
+        },
+        "guestMeeting": {
+            "AllowIPVideo": true,
+            "ScreenSharingMode": "EntireScreen"
+        },
+        "guestMessaging": {
+            "AllowUserEditMessage": true,
+            "AllowUserDeleteMessage": true,
+            "AllowUserChat": true,
+            "AllowGiphy": true,
+            "GiphyRatingType": "Moderate",
+            "AllowMemes": true,
+            "AllowStickers": true,
+            "AllowImmersiveReader": true
+        }
+    },
+    "parameters": {}
+}

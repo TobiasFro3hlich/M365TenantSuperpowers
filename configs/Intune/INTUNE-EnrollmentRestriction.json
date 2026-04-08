@@ -1,0 +1,42 @@
+{
+    "metadata": {
+        "id": "INTUNE-005",
+        "name": "Enrollment Restrictions - Block Personal Devices",
+        "description": "Blocks personal device enrollment by default on all platforms. Only corporate-owned devices can enroll. Sets per-user device limit to 15.",
+        "severity": "High",
+        "category": "EnrollmentRestriction",
+        "tags": ["enrollment", "personal-devices", "byod", "restriction", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/enrollment/enrollment-restrictions-set",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["4.2"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "deviceLimit": 15,
+        "platformRestriction": {
+            "windowsRestriction": {
+                "platformBlocked": false,
+                "personalDeviceEnrollmentBlocked": true,
+                "osMinimumVersion": "10.0.19045"
+            },
+            "iosRestriction": {
+                "platformBlocked": false,
+                "personalDeviceEnrollmentBlocked": true,
+                "osMinimumVersion": "16.0"
+            },
+            "androidRestriction": {
+                "platformBlocked": false,
+                "personalDeviceEnrollmentBlocked": true,
+                "osMinimumVersion": "13.0"
+            },
+            "macOSRestriction": {
+                "platformBlocked": false,
+                "personalDeviceEnrollmentBlocked": true,
+                "osMinimumVersion": "14.0"
+            }
+        }
+    },
+    "parameters": {}
+}

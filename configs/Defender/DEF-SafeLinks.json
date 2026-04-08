@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "id": "DEF-005",
+        "name": "Safe Links Policy - Standard Protection",
+        "description": "Enables URL scanning and rewriting in emails, Teams, and Office apps. Scans URLs at click time, tracks clicks, and blocks click-through to malicious sites.",
+        "severity": "Critical",
+        "category": "SafeLinks",
+        "tags": ["safe-links", "url-scanning", "atp", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/safe-links-about",
+        "compliance": { "cisaScuba": ["MS.DEFENDER.1.1v1"], "cisV6": ["2.1.1"], "microsoftPreset": "Standard" }
+    },
+    "settings": {
+        "policyName": "M365SP - Safe Links Standard",
+        "policy": {
+            "EnableSafeLinksForEmail": true,
+            "EnableSafeLinksForTeams": true,
+            "EnableSafeLinksForOffice": true,
+            "ScanUrls": true,
+            "DeliverMessageAfterScan": true,
+            "EnableForInternalSenders": true,
+            "TrackClicks": true,
+            "AllowClickThrough": false,
+            "DisableUrlRewrite": false,
+            "EnableOrganizationBranding": false,
+            "DoNotRewriteUrls": []
+        },
+        "rule": {
+            "RecipientDomainIs": [],
+            "Priority": 0
+        }
+    },
+    "parameters": {
+        "doNotRewriteUrls": {
+            "description": "URLs to exclude from Safe Links rewriting (e.g., internal apps)",
+            "required": false,
+            "type": "stringArray"
+        }
+    }
+}

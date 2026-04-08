@@ -1,0 +1,32 @@
+{
+    "metadata": {
+        "id": "EXO-001",
+        "name": "Organization Config - Secure Baseline",
+        "description": "Configures critical org-wide EXO settings: enables audit logging, mail tips, OAuth, and send-from-alias. Disables focused inbox for consistency.",
+        "severity": "Critical",
+        "category": "OrganizationConfig",
+        "tags": ["organization", "audit", "mailtips", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/powershell/module/exchange/set-organizationconfig",
+        "compliance": {
+            "cisaScuba": ["MS.EXO.5.1v1", "MS.EXO.13.1v1"],
+            "cisV6": ["6.1.1", "6.5.1", "6.5.2", "6.5.4"],
+            "microsoftPreset": "Organization-level settings"
+        }
+    },
+    "settings": {
+        "AuditDisabled": false,
+        "SmtpClientAuthenticationDisabled": true,
+        "OAuth2ClientProfileEnabled": true,
+        "MailTipsAllTipsEnabled": true,
+        "MailTipsExternalRecipientsTipsEnabled": true,
+        "MailTipsGroupMetricsEnabled": true,
+        "MailTipsLargeAudienceThreshold": 25,
+        "SendFromAliasEnabled": true,
+        "ReadTrackingEnabled": false,
+        "ConnectorsEnabled": true,
+        "ConnectorsEnabledForOutlook": true,
+        "ConnectorsEnabledForTeams": true,
+        "ConnectorsEnabledForSharepoint": true
+    },
+    "parameters": {}
+}

@@ -1,0 +1,15 @@
+{
+    "metadata": {
+        "id": "ENTRA-003",
+        "name": "Security Defaults - Disabled",
+        "description": "Disables Security Defaults. Required when using Conditional Access policies, as they conflict. The CA policies provide more granular control.",
+        "severity": "Critical",
+        "category": "SecurityDefaults",
+        "tags": ["security-defaults", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/entra/fundamentals/security-defaults"
+    },
+    "settings": {
+        "isEnabled": false
+    },
+    "parameters": {}
+}

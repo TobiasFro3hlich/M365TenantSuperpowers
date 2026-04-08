@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "id": "INTUNE-004",
+        "name": "Android Enterprise Compliance Policy",
+        "description": "Requires password, blocks rooted devices, enforces minimum OS version, and requires device encryption for Android Enterprise (work profile) devices.",
+        "severity": "Critical",
+        "category": "CompliancePolicy",
+        "tags": ["android", "compliance", "root-detection", "encryption", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/protect/compliance-policy-create-android-for-work",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "@odata.type": "#microsoft.graph.androidWorkProfileCompliancePolicy",
+        "displayName": "M365SP - Android Enterprise Compliance",
+        "description": "Baseline compliance for Android Enterprise work profile devices",
+        "securityBlockJailbrokenDevices": true,
+        "passwordRequired": true,
+        "passwordMinimumLength": 6,
+        "passwordRequiredType": "numericComplex",
+        "passwordMinutesOfInactivityBeforeLock": 5,
+        "osMinimumVersion": "13.0",
+        "storageRequireEncryption": true,
+        "securityRequireVerifyApps": true,
+        "assignments": [
+            {
+                "target": {
+                    "@odata.type": "#microsoft.graph.allLicensedUsersAssignmentTarget"
+                }
+            }
+        ]
+    },
+    "parameters": {}
+}

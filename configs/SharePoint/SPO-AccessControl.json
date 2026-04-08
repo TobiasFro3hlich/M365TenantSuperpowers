@@ -1,0 +1,28 @@
+{
+    "metadata": {
+        "id": "SPO-003",
+        "name": "Access Control - Secure Baseline",
+        "description": "Configures conditional access enforcement, blocks infected file downloads, and enables browser idle signout (warn at 5 min, sign out at 60 min).",
+        "severity": "Critical",
+        "category": "AccessControl",
+        "tags": ["access-control", "conditional-access", "idle-signout", "unmanaged-devices", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/sharepoint/control-access-from-unmanaged-devices"
+    },
+    "settings": {
+        "ConditionalAccessPolicy": "AllowLimitedAccess",
+        "DisallowInfectedFileDownload": true,
+        "IPAddressEnforcement": false,
+        "BrowserIdleSignout": {
+            "Enabled": true,
+            "WarnAfterMinutes": 5,
+            "SignOutAfterMinutes": 60
+        }
+    },
+    "parameters": {
+        "ipAllowList": {
+            "description": "Semicolon-separated list of allowed IP ranges (e.g., '203.0.113.0/24;198.51.100.0/24')",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

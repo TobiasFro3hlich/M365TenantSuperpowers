@@ -1,0 +1,24 @@
+{
+    "metadata": {
+        "id": "ENTRA-010",
+        "name": "Device Registration Policy",
+        "description": "Configures who can join/register devices to Entra ID. Requires MFA for device join and sets per-user device limits.",
+        "severity": "High",
+        "category": "DeviceRegistration",
+        "tags": ["devices", "registration", "mfa", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/devices/manage-device-identities"
+    },
+    "settings": {
+        "multiFactorAuthConfiguration": "required",
+        "userDeviceQuota": 50,
+        "azureADJoin": {
+            "appliesTo": "everyone",
+            "isAdminConfigurable": true
+        },
+        "azureADRegistration": {
+            "appliesTo": "everyone",
+            "isAdminConfigurable": true
+        }
+    },
+    "parameters": {}
+}

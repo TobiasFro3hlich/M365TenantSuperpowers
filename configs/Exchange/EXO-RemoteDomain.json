@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "id": "EXO-004",
+        "name": "Remote Domain - Secure Defaults",
+        "description": "Configures the default remote domain to block auto-forwarding (data exfiltration prevention), limit OOF replies to external-only, and disable TNEF.",
+        "severity": "High",
+        "category": "RemoteDomain",
+        "tags": ["remote-domain", "auto-forward", "data-exfiltration", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/exchange/mail-flow-best-practices/remote-domains/remote-domains",
+        "compliance": { "cisaScuba": ["MS.EXO.1.1v2"], "cisV6": ["6.2.1"], "microsoftPreset": "N/A" }
+    },
+    "settings": {
+        "AllowedOOFType": "External",
+        "AutoForwardEnabled": false,
+        "AutoReplyEnabled": true,
+        "DeliveryReportEnabled": true,
+        "NDREnabled": true,
+        "TNEFEnabled": false
+    },
+    "parameters": {}
+}

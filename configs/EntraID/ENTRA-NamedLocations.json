@@ -1,0 +1,37 @@
+{
+    "metadata": {
+        "id": "ENTRA-004",
+        "name": "Named Locations - DACH Region",
+        "description": "Defines trusted named locations for DACH countries (Germany, Austria, Switzerland) and a corporate office IP range. Used by CA006-BlockCountries.",
+        "severity": "Critical",
+        "category": "NamedLocations",
+        "tags": ["named-locations", "geo", "conditional-access", "dach"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/location-condition"
+    },
+    "settings": {
+        "namedLocations": [
+            {
+                "displayName": "Allowed Countries - DACH",
+                "countriesAndRegions": ["DE", "AT", "CH"],
+                "includeUnknownCountriesAndRegions": false
+            },
+            {
+                "displayName": "Corporate Office IPs",
+                "ipRanges": [
+                    {
+                        "@odata.type": "#microsoft.graph.iPv4CidrRange",
+                        "cidrAddress": "203.0.113.0/24"
+                    }
+                ],
+                "isTrusted": true
+            }
+        ]
+    },
+    "parameters": {
+        "corporateIpRange": {
+            "description": "CIDR range of the corporate office network (e.g., 203.0.113.0/24)",
+            "required": false,
+            "type": "string"
+        }
+    }
+}

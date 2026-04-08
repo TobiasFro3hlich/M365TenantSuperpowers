@@ -1,0 +1,35 @@
+{
+    "metadata": {
+        "id": "SEC-005",
+        "name": "Retention Policy - Default 1 Year",
+        "description": "Creates a default retention policy that retains content for 1 year across Exchange, SharePoint, OneDrive, and Teams. Content is kept for compliance and then can be deleted.",
+        "severity": "High",
+        "category": "Retention",
+        "tags": ["retention", "compliance", "1-year", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/retention-policies",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "policyName": "M365SP - Default Retention 1 Year",
+        "enabled": true,
+        "exchangeLocation": ["All"],
+        "sharePointLocation": ["All"],
+        "oneDriveLocation": ["All"],
+        "teamsChannelLocation": ["All"],
+        "teamsChatLocation": ["All"],
+        "rules": [
+            {
+                "name": "M365SP - Retain 1 Year",
+                "retentionDuration": 365,
+                "retentionDurationDisplayHint": "Days",
+                "retentionComplianceAction": "KeepAndDelete",
+                "expirationDateOption": "CreationAgeInDays"
+            }
+        ]
+    },
+    "parameters": {}
+}

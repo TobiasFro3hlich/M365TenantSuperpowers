@@ -1,0 +1,38 @@
+{
+    "metadata": {
+        "id": "INTUNE-003",
+        "name": "iOS/iPadOS Compliance Policy",
+        "description": "Requires passcode, blocks jailbroken devices, enforces minimum OS version, and requires device encryption for iOS/iPadOS devices.",
+        "severity": "Critical",
+        "category": "CompliancePolicy",
+        "tags": ["ios", "ipados", "compliance", "jailbreak", "passcode", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/mem/intune/protect/compliance-policy-create-ios",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": [],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "@odata.type": "#microsoft.graph.iosCompliancePolicy",
+        "displayName": "M365SP - iOS/iPadOS Compliance",
+        "description": "Baseline compliance for iOS and iPadOS devices",
+        "securityBlockJailbrokenDevices": true,
+        "managedEmailProfileRequired": false,
+        "passcodeRequired": true,
+        "passcodeMinimumLength": 6,
+        "passcodeRequiredType": "numeric",
+        "passcodeMinutesOfInactivityBeforeLock": 5,
+        "passcodeBlockSimple": true,
+        "osMinimumVersion": "16.0",
+        "deviceThreatProtectionEnabled": false,
+        "assignments": [
+            {
+                "target": {
+                    "@odata.type": "#microsoft.graph.allLicensedUsersAssignmentTarget"
+                }
+            }
+        ]
+    },
+    "parameters": {}
+}

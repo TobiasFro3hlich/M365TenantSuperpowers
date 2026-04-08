@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "id": "CA006",
+        "name": "Block Sign-Ins from Untrusted Countries",
+        "description": "Blocks sign-ins from countries/regions not on the allowed list. Requires a named location to be configured for allowed countries.",
+        "severity": "High",
+        "category": "Location",
+        "tags": ["geo-blocking", "location", "security"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-policy-location"
+    },
+    "policy": {
+        "displayName": "CA006 - Block Untrusted Countries",
+        "state": "enabledForReportingButNotEnforced",
+        "conditions": {
+            "clientAppTypes": ["all"],
+            "applications": {
+                "includeApplications": ["All"]
+            },
+            "users": {
+                "includeUsers": ["All"]
+            },
+            "locations": {
+                "includeLocations": ["All"],
+                "excludeLocations": ["AllTrusted"]
+            }
+        },
+        "grantControls": {
+            "operator": "OR",
+            "builtInControls": ["block"]
+        }
+    },
+    "parameters": {
+        "excludeBreakGlassGroup": {
+            "description": "Object ID of the break-glass/emergency access group to exclude from this policy",
+            "required": true,
+            "type": "groupObjectId"
+        }
+    }
+}

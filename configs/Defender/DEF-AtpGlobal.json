@@ -1,0 +1,20 @@
+{
+    "metadata": {
+        "id": "DEF-001",
+        "name": "ATP Global Settings",
+        "description": "Enables Safe Attachments for SharePoint, OneDrive, and Teams. Enables Safe Documents for users opening files in Protected View.",
+        "severity": "Critical",
+        "category": "AtpGlobal",
+        "tags": ["atp", "global", "safe-docs", "spo", "teams"],
+        "microsoftReference": "https://learn.microsoft.com/defender-office-365/safe-attachments-for-spo-odfb-teams-configure",
+        "compliance": { "cisaScuba": ["MS.DEFENDER.3.1v1"], "cisV6": ["2.1.5"], "microsoftPreset": "Built-in Protection" }
+    },
+    "settings": {
+        "atpPolicy": {
+            "EnableATPForSPOTeamsODB": true,
+            "EnableSafeDocs": true,
+            "AllowSafeDocsOpen": false
+        }
+    },
+    "parameters": {}
+}

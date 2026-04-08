@@ -1,0 +1,20 @@
+{
+    "metadata": {
+        "id": "EXO-008",
+        "name": "Sharing Policy - Calendar Free/Busy Only",
+        "description": "Restricts the default sharing policy to only share calendar free/busy time with external users. Prevents sharing of detailed calendar info or contacts.",
+        "severity": "High",
+        "category": "SharingPolicy",
+        "tags": ["sharing", "calendar", "external", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/exchange/sharing/sharing-policies/sharing-policies"
+    },
+    "settings": {
+        "policyName": "Default Sharing Policy",
+        "policy": {
+            "Enabled": true,
+            "Default": true,
+            "Domains": ["*:CalendarSharingFreeBusySimple"]
+        }
+    },
+    "parameters": {}
+}

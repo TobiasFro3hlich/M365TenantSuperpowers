@@ -1,0 +1,32 @@
+{
+    "metadata": {
+        "id": "SEC-006",
+        "name": "Audit Log Retention - 1 Year",
+        "description": "Enables unified audit logging and creates retention policies for critical audit activities. Ensures audit logs are retained for at least 1 year per CISA requirements.",
+        "severity": "Critical",
+        "category": "AuditRetention",
+        "tags": ["audit", "retention", "logging", "siem", "compliance", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/purview/audit-log-retention-policies",
+        "compliance": {
+            "cisaScuba": ["MS.DEFENDER.6.1v1", "MS.DEFENDER.6.3v1"],
+            "cisV6": ["3.1.1"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "retentionPolicies": [
+            {
+                "name": "M365SP - Audit Retain All 1 Year",
+                "retentionDuration": "TwelveMonths",
+                "priority": 1
+            },
+            {
+                "name": "M365SP - Audit Retain Admin Activity 1 Year",
+                "retentionDuration": "TwelveMonths",
+                "priority": 2,
+                "recordTypes": ["AzureActiveDirectory", "ExchangeAdmin", "SharePointFileOperation"]
+            }
+        ]
+    },
+    "parameters": {}
+}

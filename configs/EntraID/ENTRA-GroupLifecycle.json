@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "id": "ENTRA-009",
+        "name": "Group Lifecycle - 365 Day Expiration",
+        "description": "Sets M365 groups to expire after 365 days. Owners receive renewal notifications. Prevents orphaned groups from accumulating.",
+        "severity": "High",
+        "category": "GroupLifecycle",
+        "tags": ["groups", "lifecycle", "expiration", "governance"],
+        "microsoftReference": "https://learn.microsoft.com/entra/identity/users/groups-lifecycle"
+    },
+    "settings": {
+        "groupLifetimeInDays": 365,
+        "managedGroupTypes": "All",
+        "alternateNotificationEmails": ""
+    },
+    "parameters": {
+        "alternateNotificationEmails": {
+            "description": "Semicolon-separated email addresses for groups without owners to receive expiration notifications",
+            "required": false,
+            "type": "string"
+        }
+    }
+}
