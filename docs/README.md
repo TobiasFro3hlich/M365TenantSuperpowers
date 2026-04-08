@@ -15,6 +15,8 @@ Welcome to the M365TenantSuperpowers documentation. This module provides a modul
 - [Profiles](profiles.md) — Pre-built configuration bundles, custom profiles
 - [Configuration Reference](configuration-reference.md) — JSON config format, schema, parameters
 - [Examples](examples.md) — Real-world usage scenarios and workflows
+- [Coverage Overview](coverage-overview.md) — Abdeckung vs. CISA SCuBA, CIS v6, MS Standard/Strict mit Gap-Analyse
+- [Compliance Mapping](compliance-mapping.md) — Detailliertes Control-zu-Config Mapping
 - [M365DSC Coverage Roadmap](m365dsc-coverage-roadmap.md) — Full service-by-service implementation plan
 
 ## Architecture Overview
