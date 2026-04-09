@@ -4,9 +4,9 @@ Profiles are pre-built bundles that combine multiple configuration steps into a 
 
 ## Available Profiles
 
-### SMB-Standard (v4.0)
+### SMB-Standard (v6.0)
 
-Complete security baseline for small and medium businesses. 13 steps covering all 7 service areas.
+Complete security baseline for SMBs. 17 steps covering all 10 service areas including Intune MAM, DLP, sensitivity labels, and compliance audit.
 
 **Requires:** Graph + ExchangeOnline + SharePoint + Teams connection
 
@@ -16,15 +16,19 @@ Complete security baseline for small and medium businesses. 13 steps covering al
 | 2 | Entra ID | Auth methods (Authenticator, FIDO2), password protection |
 | 3 | Entra ID | Admin consent workflow, named locations (DACH) |
 | 4 | Conditional Access | CA001 Block Legacy Auth, CA002 MFA Admins, CA003 MFA All |
-| 5 | Conditional Access | CA004 Block High Risk, CA007 MFA Guests, CA009 Session Timeout |
-| 6 | Defender | ATP Global, Safe Links, Safe Attachments |
-| 7 | Defender | Anti-Phishing, Anti-Spam, Anti-Malware |
-| 8 | Exchange | Org Config (audit on), DKIM, external sender tag |
-| 9 | Exchange | Block auto-forwarding, transport rules ([EXTERNAL] prefix) |
-| 10 | SharePoint | Disable legacy auth, restrict sharing to existing guests, browser idle signout |
-| 11 | Teams | Meeting policy (lobby for guests), messaging policy, block consumer federation |
-| 12 | Teams | Guest access config, block third-party cloud storage (DropBox, Google Drive) |
-| 13 | Entra ID | Group creation restrictions, 365-day group expiration |
+| 5 | Conditional Access | CA004 Block High Risk Sign-ins, CA011 Block High Risk Users |
+| 6 | Conditional Access | CA007 MFA Guests, CA009 Session Timeout, CA012 Block Device Code |
+| 7 | Defender | ATP Global, Safe Links, Safe Attachments |
+| 8 | Defender | Anti-Phishing, Anti-Spam, Anti-Malware |
+| 9 | Exchange | Org Config (audit on, SMTP AUTH off), DKIM, external tag |
+| 10 | Exchange | Block auto-forwarding, transport rules ([EXTERNAL] prefix) |
+| 11 | SharePoint | Disable legacy auth, restrict sharing, browser idle signout |
+| 12 | Teams | Meeting (lobby, no anonymous start), messaging, block consumer federation |
+| 13 | Teams | Guest config, block third-party cloud storage |
+| 14 | Intune | Secure-by-default compliance, iOS + Android app protection (MAM) |
+| 15 | Security | Audit retention 1yr, CISA-required alert policies |
+| 16 | Security | DLP for PII, sensitivity labels (4 levels), label publishing |
+| 17 | Entra ID | Group creation restrictions, 365-day group expiration |
 
 **Required parameters:**
 - `excludeBreakGlassGroup` — Object ID of the break-glass/emergency access group
@@ -37,39 +41,43 @@ Invoke-M365Profile -Name 'SMB-Standard' -Parameters @{
 }
 ```
 
-### Enterprise-Hardened (v4.0)
+### Enterprise-Hardened (v6.1)
 
-Maximum security baseline for enterprise environments. 15 steps — full coverage across all 7 service areas with strict controls.
+Maximum security baseline. 23 steps — full coverage across all 10 service areas with Intune device compliance, PIM, DLP, phishing-resistant MFA, and access reviews.
 
 **Requires:** Graph + ExchangeOnline + SharePoint + Teams connection
 
 | Step | Module | What it deploys |
 |------|--------|----------------|
-| 1-3 | Entra ID | Same as SMB + cross-tenant access restrictions + device registration (MFA for join) |
-| 4 | Conditional Access | CA001-CA004 (all core identity protection) |
-| 5 | Conditional Access | CA005 Compliant Device, CA006 Block Countries |
-| 6 | Conditional Access | CA007 MFA Guests, CA008 App Protection, CA009 Session |
-| 7-8 | Defender | Full threat protection stack (same as SMB) |
-| 9 | Exchange | Org Config, DKIM, external tag |
-| 10 | Exchange | **Full lockdown:** block forwarding, transport rules, OWA, mobile, sharing |
-| 11 | SharePoint | Legacy auth off, restricted sharing, browser idle signout |
-| 12 | Teams | Meeting, messaging, calling policies |
-| 13 | Teams | App permissions, federation (block consumer), guest config |
-| 14 | Teams | Channels policy (block external shared channels), block third-party storage |
-| 15 | Entra ID | Group governance with strict controls |
+| 1-3 | Entra ID | Same as SMB + cross-tenant restrictions + device registration (MFA) |
+| 4 | Entra ID | **PIM: require approval for GA, no permanent assignments, alerts** |
+| 5 | Conditional Access | CA001-CA004 + CA011 Block High Risk Users |
+| 6 | Conditional Access | CA005 Compliant Device, CA006 Block Countries |
+| 7 | Conditional Access | CA007 MFA Guests, CA008 App Protection, CA009 Session |
+| 8 | Conditional Access | **CA012 Block Device Code, CA013 Managed Device for MFA Reg** |
+| 9-10 | Defender | Full threat protection stack |
+| 11-12 | Exchange | Full lockdown: audit, DKIM, forwarding, OWA, mobile, sharing |
+| 13 | SharePoint | Restricted sharing, browser idle signout |
+| 14-16 | Teams | Full policy suite: meeting, messaging, calling, apps, federation, guest, channels |
+| 17 | Intune | **Secure-by-default, block personal devices** |
+| 18 | Intune | **Device compliance: Windows (BitLocker, Defender), iOS, Android** |
+| 19 | Intune | **App protection (MAM) for iOS and Android** |
+| 20 | Security | Audit retention 1yr, CISA alerts |
+| 21 | Security | **DLP: PII + financial data protection** |
+| 22 | Security | **Sensitivity labels, publishing, 1yr retention** |
+| 23 | Entra ID | Group governance |
 
 **Additional over SMB:**
+- PIM with approval workflows and activation alerts
+- Phishing-resistant MFA option (CA014/CA015 available)
+- Device code flow blocked (CA012)
+- Managed device for MFA registration (CA013)
 - Cross-tenant access restrictions (B2B Direct Connect blocked)
-- MFA required for device join, device quota set
-- Device compliance required via CA005
-- Geo-blocking via CA006
-- App protection on mobile via CA008
-- OWA: LinkedIn/Facebook/external storage disabled
-- Mobile: PIN, encryption, device wipe
-- Calendar sharing: Free/Busy only
-- Teams calling policy configured
-- Teams app permission policy (custom apps blocked)
-- Teams external shared channels blocked
+- Full Intune: device compliance + enrollment restrictions + MAM
+- DLP for financial data (IBAN, SWIFT) in addition to PII
+- 1-year retention policy across all workloads
+- Full EXO lockdown: OWA, mobile, sharing policies
+- Full Teams lockdown: all 8 policies
 
 ```powershell
 Connect-M365Tenant -TenantId 'contoso.onmicrosoft.com' -Services Graph, ExchangeOnline, SharePoint, Teams `

@@ -168,3 +168,55 @@ Write-M365Log -Message "Full run log" -Level Info -LogFile './logs/deployment.lo
 ```
 
 All module functions use `Write-M365Log` internally, so you always get consistent, timestamped output.
+
+---
+
+### Invoke-M365ComplianceAudit
+
+Runs a comprehensive compliance audit against CISA SCuBA, CIS v6, and Microsoft baselines. Checks all operational items that cannot be deployed via config-as-code but CAN be audited programmatically.
+
+```powershell
+Invoke-M365ComplianceAudit
+    -Services <string[]>    # Optional. Default: All connected. Values: EntraID, Exchange, Defender, SharePoint, Teams
+    -Domains <string[]>     # Optional. Domains for DNS checks. Default: auto-detect from accepted domains
+    -OutputFormat <string[]> # Optional. Default: Console. Values: Console, HTML, CSV, JSON
+    -OutputPath <string>    # Optional. Default: ./output/audit
+```
+
+**Checks performed (15 total):**
+
+| Section | Check | Baseline |
+|---------|-------|----------|
+| Entra ID | Global Admin count 2-8 | CISA MS.AAD.7.1v1, CIS 1.1.3 |
+| Entra ID | Cloud-only privileged accounts | CISA MS.AAD.7.3v1, CIS 1.1.1 |
+| Entra ID | Auth methods migration complete | CISA MS.AAD.3.4v1 |
+| Entra ID | Audit logs accessible (SIEM) | CISA MS.AAD.4.1v1 |
+| Entra ID | MFA registration coverage % | CIS 5.2.3.4 |
+| Entra ID | No permanent PIM assignments | CISA MS.AAD.7.4v1, CIS 5.3.1 |
+| Exchange | Shared mailbox sign-in blocked | CIS 1.2.2 |
+| Exchange | No audit bypass mailboxes | CIS 6.1.3 |
+| Exchange | No transport rule whitelisting | CIS 6.2.2 |
+| DNS | SPF record with -all | CISA MS.EXO.2.2v3, CIS 2.1.8 |
+| DNS | DMARC record with p=reject | CISA MS.EXO.4.1-4.2, CIS 2.1.10 |
+| DNS | DKIM CNAME records | CISA MS.EXO.3.1v1, CIS 2.1.9 |
+| Defender | Standard preset assigned | CISA MS.DEFENDER.1.2v1 |
+| Defender | Strict preset for sensitive accounts | CISA MS.DEFENDER.1.4v1 |
+| Defender | No allowed sender domains | CIS 2.1.14 |
+
+**Output:** Color-coded PASS/FAIL/WARN with remediation guidance for each failed check.
+
+**Examples:**
+
+```powershell
+# Full audit to console
+Invoke-M365ComplianceAudit
+
+# HTML report for customer handover
+Invoke-M365ComplianceAudit -OutputFormat HTML -OutputPath './reports/customer'
+
+# Only Entra ID + Exchange checks
+Invoke-M365ComplianceAudit -Services EntraID, Exchange
+
+# Specific domains for DNS
+Invoke-M365ComplianceAudit -Domains 'contoso.com' -OutputFormat HTML, CSV
+```
