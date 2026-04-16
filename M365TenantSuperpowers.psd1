@@ -59,6 +59,7 @@
         'Set-M365EntraDeviceRegistration'
         'Set-M365EntraPIMRoleSettings'
         'Get-M365EntraPIMReport'
+        'Set-M365EntraSelfServiceControls'
         'New-M365EntraDynamicGuestGroup'
         'New-M365EntraAccessReview'
         'Get-M365EntraReport'

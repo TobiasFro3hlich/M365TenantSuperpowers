@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "id": "ENTRA-013",
+        "name": "Self-Service Controls - Block Trials and Purchases",
+        "description": "Blocks all self-service mechanisms: ad-hoc email subscriptions, Office Store access, user-initiated trials, and per-product self-service purchases. Prevents shadow IT and uncontrolled license spend.",
+        "severity": "High",
+        "category": "SelfServiceControls",
+        "tags": ["self-service", "trials", "purchases", "office-store", "shadow-it", "governance", "baseline"],
+        "microsoftReference": "https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins",
+        "compliance": {
+            "cisaScuba": [],
+            "cisV6": ["1.3.4"],
+            "microsoftPreset": "N/A"
+        }
+    },
+    "settings": {
+        "allowedToSignUpEmailBasedSubscriptions": false,
+        "isOfficeStoreEnabled": false,
+        "isAppAndServicesTrialEnabled": false,
+        "disableSelfServicePurchaseForAllProducts": true
+    },
+    "parameters": {}
+}

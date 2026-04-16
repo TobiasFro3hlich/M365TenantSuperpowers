@@ -43,6 +43,8 @@ function Import-M365EntraConfigSet {
         'GroupLifecycle'       = 'Set-M365EntraGroupLifecycle'
         'DeviceRegistration'  = 'Set-M365EntraDeviceRegistration'
         'PIM'                 = 'Set-M365EntraPIMRoleSettings'
+        'SelfServiceControls' = 'Set-M365EntraSelfServiceControls'
+        'AccessReviews'       = 'New-M365EntraAccessReview'
     }
 
     foreach ($configName in $ConfigNames) {

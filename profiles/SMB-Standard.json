@@ -32,8 +32,8 @@
             "order": 3,
             "module": "EntraID",
             "action": "Import-M365EntraConfigSet",
-            "configs": ["ENTRA-AdminConsent", "ENTRA-NamedLocations"],
-            "description": "Admin consent workflow and named locations"
+            "configs": ["ENTRA-AdminConsent", "ENTRA-NamedLocations", "ENTRA-SelfServiceControls"],
+            "description": "Admin consent, named locations, block trials/purchases"
         },
         {
             "order": 4,

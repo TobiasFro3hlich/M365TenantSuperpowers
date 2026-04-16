@@ -47,9 +47,10 @@
                 "ENTRA-AdminConsent",
                 "ENTRA-CrossTenantDefault",
                 "ENTRA-NamedLocations",
-                "ENTRA-DeviceRegistration"
+                "ENTRA-DeviceRegistration",
+                "ENTRA-SelfServiceControls"
             ],
-            "description": "Admin consent, cross-tenant, named locations, device MFA"
+            "description": "Admin consent, cross-tenant, named locations, device MFA, block trials/purchases"
         },
         {
             "order": 4,

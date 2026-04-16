@@ -161,6 +161,38 @@ function Invoke-M365ComplianceAudit {
         }
         catch { Write-M365Log -Message "Diagnostic settings check failed: $_" -Level Warning }
 
+        # CHECK: Self-service trials and purchases (CIS 1.3.4)
+        try {
+            $appsServices = Invoke-MgGraphRequest -Method GET `
+                -Uri 'https://graph.microsoft.com/beta/admin/appsAndServices' -ErrorAction Stop
+
+            $storeOff = ($appsServices.isOfficeStoreEnabled -eq $false)
+            $trialsOff = ($appsServices.isAppAndServicesTrialEnabled -eq $false)
+
+            $results.Add([PSCustomObject]@{
+                Section    = 'Entra ID'
+                Check      = 'Office Store disabled for users'
+                Baseline   = 'CIS 1.3.4'
+                Expected   = 'false'
+                Actual     = $appsServices.isOfficeStoreEnabled
+                Status     = if ($storeOff) { 'PASS' } else { 'FAIL' }
+                Severity   = 'High'
+                Remediation = if (-not $storeOff) { 'Run Set-M365EntraSelfServiceControls or disable in Admin Center > Org Settings > User owned apps' } else { '' }
+            })
+
+            $results.Add([PSCustomObject]@{
+                Section    = 'Entra ID'
+                Check      = 'User-initiated trials disabled'
+                Baseline   = 'CIS 1.3.4'
+                Expected   = 'false'
+                Actual     = $appsServices.isAppAndServicesTrialEnabled
+                Status     = if ($trialsOff) { 'PASS' } else { 'FAIL' }
+                Severity   = 'High'
+                Remediation = if (-not $trialsOff) { 'Run Set-M365EntraSelfServiceControls or disable in Admin Center > Org Settings > User owned apps' } else { '' }
+            })
+        }
+        catch { Write-M365Log -Message "Self-service controls check failed: $_" -Level Warning }
+
         # CHECK: MFA registration coverage (CIS 5.2.3.4)
         try {
             $authMethods = Invoke-MgGraphRequest -Method GET `
